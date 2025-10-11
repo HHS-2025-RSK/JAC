@@ -95,8 +95,8 @@ export const HeroScene = ({ mousePosition }: HeroSceneProps) => {
         camera={{ position: [0, 0, 10], fov: 75 }}
         gl={{ antialias: true, alpha: true }}
       >
-        <color attach="background" args={['#0d2d24']} />
-        <fog attach="fog" args={['#0d2d24', 10, 50]} />
+        <color attach="background" args={['#081f19']} />
+        <fog attach="fog" args={['#081f19', 10, 50]} />
         
         <ambientLight intensity={0.1} />
         <pointLight position={[10, 10, 10]} intensity={0.5} color="#C4A84E" />

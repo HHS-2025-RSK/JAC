@@ -21,10 +21,10 @@ export const CinematicCursor = () => {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 rounded-full bg-primary mix-blend-screen pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-primary mix-blend-screen pointer-events-none z-[9999]"
         animate={{
-          x: mousePosition.x - 6,
-          y: mousePosition.y - 6,
+          x: mousePosition.x - 3,
+          y: mousePosition.y - 3,
           scale: isHovering ? 1.5 : 1,
         }}
         transition={{
@@ -35,10 +35,10 @@ export const CinematicCursor = () => {
         }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-primary/30 pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-5 h-5 rounded-full border border-primary/30 pointer-events-none z-[9999]"
         animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
+          x: mousePosition.x - 10,
+          y: mousePosition.y - 10,
           scale: isHovering ? 1.8 : 1,
         }}
         transition={{

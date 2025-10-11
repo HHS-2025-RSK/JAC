@@ -10,6 +10,7 @@ import { Sparkles, Users, Compass, GraduationCap, Building2, BookOpen } from 'lu
 
 const Index = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -19,8 +20,16 @@ const Index = () => {
       });
     };
 
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -32,10 +41,16 @@ const Index = () => {
       <motion.div 
         className="fixed top-8 left-8 z-50"
         initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        animate={{ 
+          opacity: scrolled ? 0 : 1, 
+          x: scrolled ? -20 : 0,
+          y: scrolled ? -30 : 0
+        }}
+        transition={{ duration: 0.4 }}
       >
-        <h1 className="text-3xl font-bold text-gradient-gold tracking-wider">JAC</h1>
+        <div className="glass rounded-lg px-4 py-2 bg-gradient-to-br from-[hsl(40_20_92%)] to-[hsl(40_15_88%)]">
+          <h1 className="text-3xl font-bold text-gradient-gold tracking-wider">JAC</h1>
+        </div>
       </motion.div>
 
       {/* Hero Section */}
@@ -46,9 +61,11 @@ const Index = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
           >
-            <h1 className="text-7xl md:text-9xl font-black mb-6 text-gradient-gold">
-              JAC Magnus
-            </h1>
+            <div className="inline-block glass rounded-2xl px-8 py-6 bg-gradient-to-br from-[hsl(40_20_92%)] to-[hsl(40_15_88%)] mb-6">
+              <h1 className="text-7xl md:text-9xl font-black text-gradient-gold">
+                JAC Magnus
+              </h1>
+            </div>
             <p className="text-xl md:text-2xl text-foreground/60 mb-8 uppercase tracking-widest">
               Pvt. Ltd
             </p>

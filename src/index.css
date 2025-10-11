@@ -9,14 +9,14 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Cinematic Dark Emerald Background System */
-    --background: 160 70% 8%;
+    --background: 160 85% 6%;
     --foreground: 40 20% 95%;
 
     /* Card with glass effect */
-    --card: 160 60% 12%;
+    --card: 160 75% 9%;
     --card-foreground: 40 20% 95%;
 
-    --popover: 160 65% 10%;
+    --popover: 160 80% 7%;
     --popover-foreground: 40 20% 95%;
 
     /* Rich Gold Accent */
@@ -46,7 +46,7 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Cinematic gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(160 70% 8%) 0%, hsl(160 60% 12%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(160 85% 6%) 0%, hsl(160 75% 9%) 100%);
     --gradient-gold: linear-gradient(135deg, hsl(43 52% 54%) 0%, hsl(38 92% 50%) 100%);
     --gradient-glass: linear-gradient(135deg, rgba(196,168,78,0.08) 0%, rgba(196,168,78,0.02) 100%);
     
