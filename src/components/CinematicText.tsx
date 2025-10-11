@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface CinematicTextProps {
   children: string;
@@ -8,13 +8,13 @@ interface CinematicTextProps {
   gradient?: boolean;
 }
 
-export const CinematicText = ({ 
-  children, 
-  className = "", 
+export const CinematicText = ({
+  children,
+  className = "",
   delay = 0,
-  gradient = false 
+  gradient = false,
 }: CinematicTextProps) => {
-  const words = children.split(' ');
+  const words = children.split(" ");
 
   const container = {
     hidden: { opacity: 0 },
@@ -42,18 +42,14 @@ export const CinematicText = ({
 
   return (
     <motion.div
-      className={`${className} ${gradient ? 'text-gradient-gold' : ''}`}
+      className={`${className} ${gradient ? "text-gradient-gold" : ""}`}
       variants={container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
     >
       {words.map((word, index) => (
-        <motion.span
-          key={index}
-          variants={child}
-          className="inline-block mr-2"
-        >
+        <motion.span key={index} variants={child} className="inline-block mr-2">
           {word}
         </motion.span>
       ))}
@@ -67,7 +63,11 @@ interface FadeInSectionProps {
   delay?: number;
 }
 
-export const FadeInSection = ({ children, className = "", delay = 0 }: FadeInSectionProps) => {
+export const FadeInSection = ({
+  children,
+  className = "",
+  delay = 0,
+}: FadeInSectionProps) => {
   return (
     <motion.div
       className={className}

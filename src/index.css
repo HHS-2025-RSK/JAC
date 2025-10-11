@@ -46,10 +46,22 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Cinematic gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(160 85% 6%) 0%, hsl(160 75% 9%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(43 52% 54%) 0%, hsl(38 92% 50%) 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(196,168,78,0.08) 0%, rgba(196,168,78,0.02) 100%);
-    
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(160 85% 6%) 0%,
+      hsl(160 75% 9%) 100%
+    );
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(43 52% 54%) 0%,
+      hsl(38 92% 50%) 100%
+    );
+    --gradient-glass: linear-gradient(
+      135deg,
+      rgba(196, 168, 78, 0.08) 0%,
+      rgba(196, 168, 78, 0.02) 100%
+    );
+
     /* Shadows and glows */
     --shadow-cinematic: 0 20px 60px -10px rgba(0, 0, 0, 0.8);
     --glow-gold: 0 0 40px hsla(43, 52%, 54%, 0.3);
@@ -60,7 +72,7 @@ All colors MUST be HSL.
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 @layer base {
   * {
@@ -69,21 +81,29 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans overflow-x-hidden;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cinzel', serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cinzel", serif;
     font-weight: 700;
     letter-spacing: 0.02em;
   }
 
   /* Cinematic cursor */
-  * {
+  /* * {
     cursor: none;
-  }
+  } */
 
-  button, a, input, textarea {
+  button,
+  a,
+  input,
+  textarea {
     cursor: none;
   }
 }
@@ -107,5 +127,11 @@ All colors MUST be HSL.
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+}
+
+@layer components {
+  .frosted-glass {
+    @apply bg-white/40 backdrop-blur-md border border-white/60 shadow-lg;
   }
 }
