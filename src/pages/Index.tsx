@@ -28,6 +28,16 @@ const Index = () => {
       <CinematicCursor />
       <HeroScene mousePosition={mousePosition} />
       
+      {/* Top Left Logo */}
+      <motion.div 
+        className="fixed top-8 left-8 z-50"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
+        <h1 className="text-3xl font-bold text-gradient-gold tracking-wider">JAC</h1>
+      </motion.div>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6">
         <div className="text-center max-w-5xl">
@@ -61,21 +71,24 @@ const Index = () => {
       <section className="relative py-32 px-6">
         <div className="max-w-4xl mx-auto">
           <FadeInSection>
-            <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed mb-6">
-              We live in a world where everyone's building something - yet few know why.
-            </p>
-            <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed mb-6">
-              At JAC Magnus, we build with purpose. Every idea we create, every product we design, and every solution we deliver has meaning behind it.
-            </p>
-            <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed mb-6">
-              We don't chase trends or noise. We focus on what works - refining, rethinking, and rebuilding until it feels right.
-            </p>
-            <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed mb-6">
-              Our strength lies in doing ordinary things differently - with sharper thinking, cleaner execution, and deeper intent.
-            </p>
-            <p className="text-xl md:text-2xl text-gradient-gold leading-relaxed font-bold">
-              And at the heart of it all is one unwavering belief - if it's not different, it's not Magnus.
-            </p>
+            <div className="glass rounded-3xl p-12 md:p-16 bg-gradient-to-br from-[hsl(40_20_92%)] to-[hsl(40_15_88%)]">
+              <h2 className="text-4xl md:text-5xl font-bold text-gradient-gold mb-8 text-center">JAC Magnus</h2>
+              <p className="text-xl md:text-2xl text-background leading-relaxed mb-6">
+                We live in a world where everyone's building something - yet few know why.
+              </p>
+              <p className="text-xl md:text-2xl text-background leading-relaxed mb-6">
+                At JAC Magnus, we build with purpose. Every idea we create, every product we design, and every solution we deliver has meaning behind it.
+              </p>
+              <p className="text-xl md:text-2xl text-background leading-relaxed mb-6">
+                We don't chase trends or noise. We focus on what works - refining, rethinking, and rebuilding until it feels right.
+              </p>
+              <p className="text-xl md:text-2xl text-background leading-relaxed mb-6">
+                Our strength lies in doing ordinary things differently - with sharper thinking, cleaner execution, and deeper intent.
+              </p>
+              <p className="text-xl md:text-2xl text-gradient-gold leading-relaxed font-bold">
+                And at the heart of it all is one unwavering belief - if it's not different, it's not Magnus.
+              </p>
+            </div>
           </FadeInSection>
         </div>
       </section>
