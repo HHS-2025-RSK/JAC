@@ -73,6 +73,7 @@ interface FounderCardProps {
   powerMove: string;
   takeaway: string;
   delay?: number;
+  image?: string;
 }
 
 export const FounderCard = ({
@@ -83,6 +84,7 @@ export const FounderCard = ({
   powerMove,
   takeaway,
   delay = 0,
+  image,
 }: FounderCardProps) => {
   return (
     <motion.div
@@ -96,12 +98,22 @@ export const FounderCard = ({
       <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary via-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       <div className="relative z-10">
-        <h3 className="text-3xl font-bold mb-2 text-gradient-gold">{name}</h3>
-        <p className="text-primary text-sm uppercase tracking-wider mb-6">
+        {image && (
+          <div className="flex justify-center mb-6">
+            <img 
+              src={image} 
+              alt={name}
+              className="w-32 h-32 rounded-full border-4 border-gradient-gold/20 shadow-lg"
+            />
+          </div>
+        )}
+        
+        <h3 className="text-4xl font-bold mb-2 text-gradient-gold text-center">{name}</h3>
+        <p className="text-primary text-base uppercase tracking-wider mb-6 text-center">
           {title}
         </p>
 
-        <div className="space-y-4 text-slate-600">
+        <div className="space-y-5 text-slate-600 text-lg">
           <div>
             <span className="text-primary font-semibold">Quirk:</span>
             <p className="mt-1">{quirk}</p>
@@ -118,7 +130,7 @@ export const FounderCard = ({
           </div>
 
           <div className="pt-4 border-t border-slate-300/70">
-            <p className="text-sm italic text-slate-500">{takeaway}</p>
+            <p className="text-base italic text-slate-500">{takeaway}</p>
           </div>
         </div>
       </div>

@@ -396,6 +396,7 @@ import { CinematicText, FadeInSection } from "@/components/CinematicText";
 import { FounderCard } from "@/components/FounderCard";
 import { ProductCard } from "@/components/ProductCard";
 import { ContactForm } from "@/components/ContactForm";
+import { FallingLetters } from "@/components/FallingLetters";
 import { motion } from "framer-motion";
 import { Building2, BookOpen } from "lucide-react";
 
@@ -461,31 +462,31 @@ const Index = () => {
       </section>
 
       {/* Introduction */}
-      <section className="relative py-32 px-6 bg-[#FAF9F6]">
+      <section className="relative py-40 px-6 bg-[#FAF9F6]">
         <div className="max-w-4xl mx-auto">
           <FadeInSection>
-            <div className="frosted-glass rounded-3xl p-12 md:p-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gradient-gold mb-8 text-center">
+            <div className="frosted-glass rounded-3xl p-12 md:p-20">
+              <h2 className="text-5xl md:text-6xl font-bold text-gradient-gold mb-10 text-center">
                 JAC Magnus
               </h2>
-              <p className="text-xl md:text-2xl text-slate-800 leading-relaxed mb-6">
+              <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8">
                 We live in a world where everyone's building something - yet few
                 know why.
               </p>
-              <p className="text-xl md:text-2xl text-slate-800 leading-relaxed mb-6">
+              <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8">
                 At JAC Magnus, we build with purpose. Every idea we create,
                 every product we design, and every solution we deliver has
                 meaning behind it.
               </p>
-              <p className="text-xl md:text-2xl text-slate-800 leading-relaxed mb-6">
+              <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8">
                 We don't chase trends or noise. We focus on what works -
                 refining, rethinking, and rebuilding until it feels right.
               </p>
-              <p className="text-xl md:text-2xl text-slate-800 leading-relaxed mb-6">
+              <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8">
                 Our strength lies in doing ordinary things differently - with
                 sharper thinking, cleaner execution, and deeper intent.
               </p>
-              <p className="text-xl md:text-2xl text-gradient-gold leading-relaxed font-bold">
+              <p className="text-2xl md:text-3xl text-gradient-gold leading-relaxed font-bold">
                 And at the heart of it all is one unwavering belief - if it's
                 not different, it's not Magnus.
               </p>
@@ -495,29 +496,25 @@ const Index = () => {
       </section>
 
       {/* Legacy Section */}
-      <section className="relative py-32 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          {/* This is the corrected code */}
-          <div className="text-5xl md:text-7xl font-black text-center mb-16 text-slate-900 flex flex-wrap justify-center items-center gap-x-4">
-            <CinematicText>J + A + C =</CinematicText>
-            <CinematicText gradient>A Legacy In Letters</CinematicText>
-          </div>
+      <section className="relative py-40 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <FallingLetters />
 
           <FadeInSection delay={0.3}>
-            <div className="frosted-glass rounded-2xl p-12 max-w-4xl mx-auto">
-              <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-6">
+            <div className="frosted-glass rounded-2xl p-12 md:p-16 max-w-4xl mx-auto">
+              <p className="text-2xl md:text-3xl text-slate-700 leading-relaxed mb-8">
                 JAC Magnus isn't just a name - it's a story.
               </p>
-              <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-6">
+              <p className="text-2xl md:text-3xl text-slate-700 leading-relaxed mb-8">
                 Each letter, J, A, and C, carries the name of the mothers who
                 shaped the founders behind this company. Women whose strength,
                 grace, and resilience became the foundation of everything we do.
               </p>
-              <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-6">
+              <p className="text-2xl md:text-3xl text-slate-700 leading-relaxed mb-8">
                 JAC stands for gratitude - a daily reminder that before
                 innovation comes intention, and before growth comes grounding.
               </p>
-              <p className="text-lg md:text-xl text-primary leading-relaxed font-semibold">
+              <p className="text-2xl md:text-3xl text-primary leading-relaxed font-semibold">
                 Our name is our origin, our purpose, and our promise to build
                 with heart, lead with integrity, and create with meaning.
                 Because strength isn't loud. It's lasting!
@@ -528,87 +525,100 @@ const Index = () => {
       </section>
 
       {/* The Pack */}
-      <section className="relative py-32 px-6 bg-[#FAF9F6]">
+      <section className="relative py-40 px-6 bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <CinematicText className="text-6xl md:text-8xl font-black mb-8 text-slate-900">
+            <CinematicText className="text-7xl md:text-9xl font-black mb-12 text-slate-900">
               The Pack
             </CinematicText>
 
             <FadeInSection delay={0.3}>
-              <p className="text-2xl md:text-3xl text-gradient-gold font-bold mb-6">
+              <p className="text-3xl md:text-4xl text-gradient-gold font-bold mb-8 text-center">
                 Three founders. One vision.
               </p>
-              <p className="text-lg md:text-xl text-slate-700 mb-6 max-w-3xl mx-auto">
+              <p className="text-2xl md:text-3xl text-slate-700 mb-8 max-w-3xl mx-auto">
                 They didn't just build a company - they forged a force that
                 moves with purpose, precision, and pulse.
               </p>
-              <p className="text-lg md:text-xl text-slate-700 mb-6">
+              <p className="text-2xl md:text-3xl text-slate-700 mb-8">
                 Together, they're the equation that shouldn't work - but somehow
                 does.
-              </p>
-
-              <div className="flex flex-col md:flex-row justify-center gap-4 my-12 text-xl font-semibold text-primary">
-                <p>One sparks the fire</p>
-                <p className="hidden md:block">•</p>
-                <p>One commands the storm</p>
-                <p className="hidden md:block">•</p>
-                <p>One anchors the calm</p>
-              </div>
-
-              <p className="text-lg md:text-xl text-slate-700 italic">
-                JAC Magnus isn't powered by luck or noise - it's built on
-                instinct, discipline, and the belief that impossible isn't made
-                for us.
               </p>
             </FadeInSection>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-20">
-            <FounderCard
-              name="Ryan"
-              title="The Trailblazer"
-              quirk="Treats every brainstorming session like a hunt - snacks optional, bold ideas mandatory."
-              perk="Can turn midnight chaos into sunrise strategy without breaking stride."
-              powerMove="Moves in silence but leaves tracks that redefine direction."
-              takeaway="The fire that leads the run."
-              delay={0.1}
-            />
-            <FounderCard
-              name="SK"
-              title="The Tempest"
-              quirk="Turns crisis meetings into comedy hours - yet somehow doubles productivity."
-              perk="Executes so sharply, the wilderness adjusts its pace."
-              powerMove="Commands pace, purpose, and pulse - and still finds time to make it all look effortless."
-              takeaway="The storm that drives the chase."
-              delay={0.2}
-            />
-            <FounderCard
-              name="Seth"
-              title="The Silent Fang"
-              quirk="Replies three hours late but fixes what no one knew was broken - and probably the Wi-Fi too."
-              perk="Finds peace in code, poetry in precision, and stillness in systems."
-              powerMove="Operates at 1% volume, 100% impact - proof that calm isn't quiet, it's control."
-              takeaway="The calm that steadies the hunt."
-              delay={0.3}
-            />
+          <div className="grid md:grid-cols-3 gap-12 mt-20">
+            <div>
+              <p className="text-2xl font-bold text-primary mb-6 text-center">One sparks the fire</p>
+              <FounderCard
+                name="Ryan"
+                title="The Trailblazer"
+                quirk="Treats every brainstorming session like a hunt - snacks optional, bold ideas mandatory."
+                perk="Can turn midnight chaos into sunrise strategy without breaking stride."
+                powerMove="Moves in silence but leaves tracks that redefine direction."
+                takeaway="The fire that leads the run."
+                delay={0.1}
+                image="https://api.dicebear.com/7.x/avataaars/svg?seed=Ryan"
+              />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-primary mb-6 text-center">One commands the storm</p>
+              <FounderCard
+                name="SK"
+                title="The Tempest"
+                quirk="Turns crisis meetings into comedy hours - yet somehow doubles productivity."
+                perk="Executes so sharply, the wilderness adjusts its pace."
+                powerMove="Commands pace, purpose, and pulse - and still finds time to make it all look effortless."
+                takeaway="The storm that drives the chase."
+                delay={0.2}
+                image="https://api.dicebear.com/7.x/avataaars/svg?seed=SK&gender=female"
+              />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-primary mb-6 text-center">One anchors the calm</p>
+              <FounderCard
+                name="Seth"
+                title="The Silent Fang"
+                quirk="Replies three hours late but fixes what no one knew was broken - and probably the Wi-Fi too."
+                perk="Finds peace in code, poetry in precision, and stillness in systems."
+                powerMove="Operates at 1% volume, 100% impact - proof that calm isn't quiet, it's control."
+                takeaway="The calm that steadies the hunt."
+                delay={0.3}
+                image="https://api.dicebear.com/7.x/avataaars/svg?seed=Seth"
+              />
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Pack Philosophy */}
+      <section className="relative py-40 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <FadeInSection>
+            <div className="frosted-glass rounded-2xl p-12 md:p-16 text-center">
+              <p className="text-2xl md:text-3xl text-slate-700 leading-relaxed italic">
+                JAC Magnus isn't powered by luck or noise - it's built on
+                instinct, discipline, and the belief that impossible isn't made
+                for us.
+              </p>
+            </div>
+          </FadeInSection>
+        </div>
+      </section>
+
       {/* The Hunt - Strategy */}
-      <section className="relative py-32 px-6 bg-white">
+      <section className="relative py-40 px-6 bg-[#FAF9F6]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <CinematicText className="text-6xl md:text-8xl font-black mb-8 text-slate-900">
+            <CinematicText className="text-7xl md:text-9xl font-black mb-12 text-slate-900">
               The Hunt
             </CinematicText>
 
             <FadeInSection delay={0.3}>
-              <p className="text-xl md:text-2xl text-slate-800 italic mb-12">
+              <p className="text-2xl md:text-3xl text-slate-800 italic mb-12">
                 Eyes on the horizon, focus on the target.
               </p>
-              <p className="text-lg md:text-xl text-slate-700">
+              <p className="text-2xl md:text-3xl text-slate-700">
                 We track opportunity with precision, adapt to the terrain, and
                 strike only when the outcome matters.
               </p>
@@ -616,14 +626,14 @@ const Index = () => {
           </div>
 
           <FadeInSection delay={0.5}>
-            <div className="frosted-glass rounded-2xl p-12">
-              <h3 className="text-4xl font-bold text-gradient-gold mb-8 text-center">
+            <div className="frosted-glass rounded-2xl p-12 md:p-16">
+              <h3 className="text-5xl md:text-6xl font-bold text-gradient-gold mb-10 text-center">
                 Strategy
               </h3>
-              <p className="text-2xl text-primary text-center mb-8 font-semibold">
+              <p className="text-3xl md:text-4xl text-primary text-center mb-10 font-semibold">
                 Consulting | Product Management | Hotel Management | Marketing
               </p>
-              <div className="space-y-6 text-lg text-slate-700">
+              <div className="space-y-8 text-2xl md:text-3xl text-slate-700">
                 <p>
                   We work across industries that define the pace of progress.
                   From consulting that builds clarity, to strategies that spark
@@ -634,7 +644,7 @@ const Index = () => {
                   Every vertical we enter is approached with the same mindset -
                   clarity, creativity, and commitment.
                 </p>
-                <p className="text-primary font-semibold">
+                <p className="text-primary font-semibold text-center text-3xl md:text-4xl">
                   We don't diversify to do more. We diversify to do better.
                 </p>
               </div>
@@ -644,18 +654,18 @@ const Index = () => {
       </section>
 
       {/* The Den */}
-      <section className="relative py-32 px-6 bg-[#FAF9F6]">
+      <section className="relative py-40 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <CinematicText className="text-6xl md:text-8xl font-black text-center mb-16 text-slate-900">
+          <CinematicText className="text-7xl md:text-9xl font-black text-center mb-20 text-slate-900">
             The Den
           </CinematicText>
 
           <FadeInSection delay={0.3}>
-            <div className="frosted-glass rounded-2xl p-12 max-w-4xl mx-auto">
-              <p className="text-xl md:text-2xl text-gradient-gold font-bold mb-8 text-center">
+            <div className="frosted-glass rounded-2xl p-12 md:p-16 max-w-4xl mx-auto">
+              <p className="text-3xl md:text-4xl text-gradient-gold font-bold mb-10 text-center">
                 Strength built on knowledge, guided by instinct.
               </p>
-              <div className="space-y-6 text-lg text-slate-700">
+              <div className="space-y-8 text-2xl md:text-3xl text-slate-700">
                 <p>
                   Our den is powered by alumni from ISB and IIIT Hyderabad -
                   institutions known for transforming intelligence into impact.
@@ -676,15 +686,15 @@ const Index = () => {
       </section>
 
       {/* Our Territory - Products */}
-      <section className="relative py-32 px-6 bg-white">
+      <section className="relative py-40 px-6 bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <CinematicText className="text-6xl md:text-8xl font-black mb-8 text-slate-900">
+            <CinematicText className="text-7xl md:text-9xl font-black mb-12 text-slate-900">
               Our Territory
             </CinematicText>
 
             <FadeInSection delay={0.3}>
-              <p className="text-xl md:text-2xl text-slate-700">
+              <p className="text-2xl md:text-3xl text-slate-700">
                 Where instinct turns into innovation. Our creations are the
                 proof of our hunt — built from instinct, sharpened by intellect,
                 and driven by purpose.
@@ -712,18 +722,18 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="relative py-32 px-6 bg-[#FAF9F6]">
+      <section className="relative py-40 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <CinematicText className="text-6xl md:text-8xl font-black mb-8 text-slate-900">
+            <CinematicText className="text-7xl md:text-9xl font-black mb-12 text-slate-900">
               The Call of the Wild
             </CinematicText>
 
             <FadeInSection delay={0.3}>
-              <p className="text-2xl md:text-3xl text-gradient-gold font-bold mb-8">
+              <p className="text-3xl md:text-4xl text-gradient-gold font-bold mb-10 text-center">
                 Where echoes become alliances.
               </p>
-              <div className="max-w-3xl mx-auto space-y-6 text-lg md:text-xl text-slate-700">
+              <div className="max-w-3xl mx-auto space-y-8 text-2xl md:text-3xl text-slate-700">
                 <p>
                   Every idea starts as a signal - a call sent out into the
                   unknown. At JAC Magnus, we run toward those echoes that sound
