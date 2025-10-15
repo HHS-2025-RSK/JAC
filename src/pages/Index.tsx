@@ -941,7 +941,7 @@ const Index = () => {
       <HeroSection />
 
       {/* Introduction */}
-      <section id="intro" className="relative z-10 pt-20 bg-[#F3EAD3]">
+      <section id="intro" className="relative z-10 pt-20">
         <div
           className="absolute bottom-0 left-0 h-[180vh] w-full"
           style={{
