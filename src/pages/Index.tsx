@@ -840,7 +840,16 @@ import { ProductCard } from "@/components/ProductCard";
 import { ContactForm } from "@/components/ContactForm";
 import { FallingLetters } from "@/components/FallingLetters";
 import { motion } from "framer-motion";
-import { Building2, BookOpen, Menu, X } from "lucide-react";
+import {
+  Building2,
+  BookOpen,
+  Menu,
+  X,
+  Target,
+  Zap,
+  Globe,
+  ChevronRight,
+} from "lucide-react";
 import GradientScrollText from "@/components/GradientScrollText";
 import forestHero from "@/assets/forest-video.mp4";
 import HeroSection from "@/components/HeroSection";
@@ -875,7 +884,7 @@ const Index = () => {
       {/* Navigation Bar */}
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/80 backdrop-blur-md shadow-lg" : "bg-transparent"
+          scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -893,7 +902,7 @@ const Index = () => {
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-lg font-medium text-slate-700 hover:text-gradient-gold transition-colors"
+                className="text-lg font-medium text-slate-700 hover:text-gradient-gold transition-colors cursor-pointer"
                 whileHover={{ scale: 1.1 }}
               >
                 {item.name}
@@ -909,7 +918,7 @@ const Index = () => {
         </div>
         {mobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-white/90 backdrop-blur-md px-6 py-4"
+            className="md:hidden bg-white/95 backdrop-blur-md px-6 py-4"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -918,7 +927,7 @@ const Index = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="block py-2 text-lg font-medium text-slate-700 hover:text-gradient-gold"
+                className="block py-2 text-lg font-medium text-slate-700 hover:text-gradient-gold cursor-pointer"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
@@ -932,7 +941,7 @@ const Index = () => {
       <HeroSection />
 
       {/* Introduction */}
-      <section id="intro" className="relative z-10 pt-20">
+      <section id="intro" className="relative z-10 pt-20 bg-[#F3EAD3]">
         <div
           className="absolute bottom-0 left-0 h-[180vh] w-full"
           style={{
@@ -947,7 +956,7 @@ const Index = () => {
         ></div>
         <div className="relative mx-auto max-w-6xl px-6 pb-40 pt-[50vh]">
           <FadeInSection>
-            <div className="rounded-3xl px-12 py-6 md:px-12 md:py-6 frosted-glass shadow-xl border border-white/20">
+            <div className="rounded-3xl px-12 py-6 md:px-12 md:py-6 bg-white shadow-xl border border-amber-100">
               <GradientScrollText>
                 We live in a world where everyone's building something - yet few
                 know why.
@@ -993,8 +1002,8 @@ const Index = () => {
           <FallingLetters />
 
           <FadeInSection delay={0.3}>
-            <div className="rounded-2xl max-w-5xl mx-auto overflow-hidden shadow-2xl border border-slate-200/50">
-              <div className="bg-gradient-to-br from-[#FDFBF3] to-[#F3EAD3] px-12 md:px-16 py-8 md:py-8">
+            <div className="rounded-2xl max-w-5xl mx-auto overflow-hidden shadow-2xl border border-slate-200">
+              <div className="bg-[#FDFBF3] px-12 md:px-16 py-8 md:py-8">
                 <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8">
                   JAC Magnus isn't just a name - it's a story.
                 </p>
@@ -1033,12 +1042,12 @@ const Index = () => {
       <section id="pack" className="relative py-40 px-6 bg-[#F2E6CC]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <CinematicText className="text-7xl md:text-9xl font-black mb-12 text-slate-900">
+            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
               The Pack
             </CinematicText>
 
             <FadeInSection delay={0.3}>
-              <p className="text-3xl md:text-4xl text-gradient-gold font-bold mb-8 text-center">
+              <p className="text-3xl md:text-4xl text-amber-800 font-bold mb-12">
                 Three founders. One vision.
               </p>
               <p className="text-2xl md:text-3xl text-slate-700 mb-8 max-w-3xl mx-auto">
@@ -1122,7 +1131,7 @@ const Index = () => {
       <section className="relative px-6 bg-[#FAF9F6]">
         <div className="max-w-6xl mx-auto">
           <FadeInSection>
-            <motion.div whileHover={{ scale: 1.02 }}>
+            <motion.div className="p-12">
               <p className="text-2xl md:text-3xl text-slate-700 leading-relaxed italic">
                 JAC Magnus isn't powered by luck or noise - it's built on
                 instinct, discipline, and the belief that impossible isn't made
@@ -1133,16 +1142,16 @@ const Index = () => {
         </div>
       </section>
 
-      {/* The Hunt - Strategy */}
+      {/* The Hunt - Strategy (Redesigned: Gold-themed cards on rich cream) */}
       <section id="hunt" className="relative py-20 px-6 bg-[#FAF9F6]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <CinematicText className="text-7xl md:text-9xl font-black mb-12 text-slate-900">
+            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
               The Hunt
             </CinematicText>
 
             <FadeInSection delay={0.3}>
-              <p className="text-2xl md:text-3xl text-slate-800 italic mb-12">
+              <p className="text-3xl md:text-4xl text-amber-800 font-bold mb-12">
                 Eyes on the horizon, focus on the target.
               </p>
               <p className="text-2xl md:text-3xl text-slate-700">
@@ -1154,11 +1163,12 @@ const Index = () => {
 
           <FadeInSection delay={0.5}>
             <div className="frosted-glass rounded-2xl p-12 md:p-16 shadow-xl border border-white/20">
-              <h3 className="text-5xl md:text-6xl font-bold text-gradient-gold mb-10 text-center">
+              {/* <h3 className="text-5xl md:text-6xl font-bold text-gradient-gold mb-10 text-center">
                 Strategy
-              </h3>
+              </h3> */}
               <p className="text-3xl md:text-4xl text-primary text-center mb-10 font-semibold">
-                Consulting | Product Management | Hotel Management | Marketing
+                Strategy | Consulting | Product Management | Hotel Management |
+                Marketing
               </p>
               <div className="space-y-8 text-2xl md:text-3xl text-slate-700">
                 <p>
@@ -1180,87 +1190,151 @@ const Index = () => {
         </div>
       </section>
 
-      {/* The Den */}
+      {/* The Den (Redesigned: Gold timeline on white/light cream) */}
       <section id="den" className="relative py-40 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <CinematicText className="text-7xl md:text-9xl font-black text-center mb-20 text-slate-900">
-            The Den
-          </CinematicText>
+        <div className="relative max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
+              The Den
+            </CinematicText>
+            <p className="text-3xl md:text-4xl text-amber-800 font-bold">
+              Strength built on knowledge, guided by instinct.
+            </p>
+          </motion.div>
 
-          <FadeInSection delay={0.3}>
-            <motion.div
-              className="frosted-glass rounded-2xl p-12 md:p-16 max-w-4xl mx-auto shadow-xl border border-white/20"
-              whileHover={{ scale: 1.02 }}
-            >
-              <p className="text-3xl md:text-4xl text-gradient-gold font-bold mb-10 text-center">
-                Strength built on knowledge, guided by instinct.
-              </p>
-              <div className="space-y-8 text-2xl md:text-3xl text-slate-700">
-                <p>
-                  Our den is powered by alumni from ISB and IIIT Hyderabad -
-                  institutions known for transforming intelligence into impact.
-                </p>
-                <p>
-                  Here, intellect becomes our compass and collaboration, our
-                  hunt. It's where sharp minds gather, plans take shape, and
-                  every pursuit begins with purpose.
-                </p>
-                <p className="text-primary font-semibold">
-                  We don't just understand the future - we're building it, one
-                  product at a time.
-                </p>
-              </div>
-            </motion.div>
-          </FadeInSection>
+          <div className="relative">
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-amber-400 to-yellow-600 h-full rounded-full shadow-glow"></div>
+            {[
+              {
+                side: "left",
+                title: "Alumni Power",
+                desc: "Powered by alumni from ISB and IIIT Hyderabad - institutions known for transforming intelligence into impact.",
+                delay: 0.2,
+              },
+              {
+                side: "right",
+                title: "Collaboration Hub",
+                desc: "Here, intellect becomes our compass and collaboration, our hunt. It's where sharp minds gather, plans take shape, and every pursuit begins with purpose.",
+                delay: 0.4,
+              },
+              {
+                side: "left",
+                title: "Future Builders",
+                desc: "We don't just understand the future - we're building it, one product at a time.",
+                delay: 0.6,
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: item.side === "left" ? -100 : 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: item.delay }}
+                className={`relative flex items-center mb-32 ${
+                  item.side === "left" ? "justify-start" : "justify-end"
+                }`}
+              >
+                <div
+                  className={`max-w-xl bg-[#F3EAD3] rounded-3xl p-10 shadow-2xl border border-amber-200 w-full md:w-1/2 ${
+                    item.side === "left" ? "mr-auto" : "ml-auto"
+                  }`}
+                >
+                  <h4 className="text-3xl font-bold text-gradient-gold mb-4">
+                    {item.title}
+                  </h4>
+                  <p className="text-xl text-amber-700 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-white shadow-lg"></div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Our Territory - Products */}
-      <section id="territory" className="relative py-40 px-6 bg-[#FAF9F6]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <CinematicText className="text-7xl md:text-9xl font-black mb-12 text-slate-900">
+      {/* Our Territory - Products (Redesigned: Gold cards on rich cream) */}
+      <section id="territory" className="relative py-40 px-6 bg-[#F3EAD3]">
+        <div className="relative max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
               Our Territory
             </CinematicText>
+            <p className="text-2xl md:text-3xl text-amber-800 font-bold mb-12">
+              Where instinct turns into innovation. Our creations are the proof
+              of our hunt — built from instinct, sharpened by intellect, and
+              driven by purpose.
+            </p>
+          </motion.div>
 
-            <FadeInSection delay={0.3}>
-              <p className="text-2xl md:text-3xl text-slate-700">
-                Where instinct turns into innovation. Our creations are the
-                proof of our hunt — built from instinct, sharpened by intellect,
-                and driven by purpose.
-              </p>
-            </FadeInSection>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div
-              whileHover={{
-                scale: 1.03,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-              }}
-            >
-              <ProductCard
-                title="Staffari"
-                subtitle="The Alpha Platform of Hospitality."
-                description="Born from 'Staff' + 'Safari,' Staffari reimagines the future of hospitality. It's not just a staffing platform - it's a full-scale consulting and management ecosystem that transforms how hotels hire, operate, and grow. By integrating workforce intelligence, operational clarity, and strategic consulting, Staffari helps the industry move smarter and faster. Because in the hospitality world, true excellence isn't managed - it's mastered."
-                icon={<Building2 size={48} strokeWidth={1.5} />}
-                delay={0.1}
-              />
-            </motion.div>
-            <motion.div
-              whileHover={{
-                scale: 1.03,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-              }}
-            >
-              <ProductCard
-                title="Shelfie"
-                subtitle="Your Shelf. Your Story."
-                description="Shelfie was born from the creative core of the den - inspired by those who live, write, and dream in stories. It's not just a space to read or write - it's where imagination moves, evolves, and keeps you chasing the next line. A haven for readers, writers, and thinkers, built for those who crave rhythm in words and magic in meaning. Shelfie isn't just for stories - it's an experience that draws you in, word by word, frame by frame."
-                icon={<BookOpen size={48} strokeWidth={1.5} />}
-                delay={0.2}
-              />
-            </motion.div>
+          <div className="grid md:grid-cols-2 gap-16">
+            {[
+              {
+                title: "Staffari",
+                subtitle: "The Alpha Platform of Hospitality.",
+                desc: "Born from 'Staff' + 'Safari,' Staffari reimagines the future of hospitality. It's not just a staffing platform - it's a full-scale consulting and management ecosystem that transforms how hotels hire, operate, and grow. By integrating workforce intelligence, operational clarity, and strategic consulting, Staffari helps the industry move smarter and faster. Because in the hospitality world, true excellence isn't managed - it's mastered.",
+                icon: <Building2 className="w-16 h-16" />,
+                features: [
+                  "Workforce Intelligence",
+                  "Operational Clarity",
+                  "Strategic Consulting",
+                ],
+              },
+              {
+                title: "Shelfie",
+                subtitle: "Your Shelf. Your Story.",
+                desc: "Shelfie was born from the creative core of the den - inspired by those who live, write, and dream in stories. It's not just a space to read or write - it's where imagination moves, evolves, and keeps you chasing the next line. A haven for readers, writers, and thinkers, built for those who crave rhythm in words and magic in meaning. Shelfie isn't just for stories - it's an experience that draws you in, word by word, frame by frame.",
+                icon: <BookOpen className="w-16 h-16" />,
+                features: [
+                  "Imagination Hub",
+                  "Reader's Haven",
+                  "Writer's Rhythm",
+                ],
+              },
+            ].map((product, index) => (
+              <motion.div
+                key={product.title}
+                initial={{ opacity: 0, rotateY: -180 }}
+                whileInView={{ opacity: 1, rotateY: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                whileHover={{ rotateY: 10, scale: 1.03 }}
+                className="relative preserve-3d perspective-1000"
+              >
+                <div className="relative bg-white rounded-3xl p-10 h-full shadow-2xl border border-amber-200 transform-gpu transition-all duration-500 hover:shadow-amber-500/50">
+                  <div className="text-gradient-gold mb-6">{product.icon}</div>
+                  <h3 className="text-5xl font-bold text-amber-900 mb-2">
+                    {product.title}
+                  </h3>
+                  <p className="text-2xl text-amber-700 mb-6">
+                    {product.subtitle}
+                  </p>
+                  <p className="text-lg text-amber-800 mb-8">{product.desc}</p>
+                  <ul className="space-y-4">
+                    {product.features.map((feat) => (
+                      <motion.li
+                        key={feat}
+                        initial={{ x: -20, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        className="flex items-center text-amber-700"
+                      >
+                        <ChevronRight className="w-5 h-5 mr-2 text-yellow-500" />
+                        {feat}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+              // Removed outer gradient p-1 for solid feel
+            ))}
           </div>
         </div>
       </section>
@@ -1269,12 +1343,12 @@ const Index = () => {
       <section id="contact" className="relative py-40 px-6 bg-white">
         <div className="max-w-6xl mx-auto py-20">
           <div className="text-center mb-20">
-            <CinematicText className="text-7xl md:text-9xl font-black mb-12 text-slate-900">
+            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
               The Call of the Wild
             </CinematicText>
 
             <FadeInSection delay={0.3}>
-              <p className="text-3xl md:text-4xl text-gradient-gold font-bold mb-10 text-center">
+              <p className="text-2xl md:text-3xl text-amber-800 font-bold mb-12">
                 Where echoes become alliances.
               </p>
               <div className="max-w-3xl mx-auto space-y-8 text-2xl md:text-3xl text-slate-700">
@@ -1312,7 +1386,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative pb-16 mt-24 px-6 bg-transparent border-slate-200/80 overflow-hidden">
+      <footer className="relative pb-16 mt-24 px-6 border-slate-200 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-gradient-gold mb-4">
             JAC Magnus Pvt. Ltd.
