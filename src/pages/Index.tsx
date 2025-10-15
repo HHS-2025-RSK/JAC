@@ -1188,10 +1188,17 @@ const Index = () => {
             </div>
           </FadeInSection>
         </div>
+        <div
+          className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to top, #FAF9F6 10%, transparent 100%)",
+          }}
+        ></div>
       </section>
 
       {/* The Den (Redesigned: Gold timeline on white/light cream) */}
-      <section id="den" className="relative py-40 px-6 bg-white">
+      <section id="den" className="relative py-10 px-6 bg-[#FAF9F6]">
         <div className="relative max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -1255,10 +1262,17 @@ const Index = () => {
             ))}
           </div>
         </div>
+        <div
+          className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to top, #F3EAD3 10%, transparent 100%)",
+          }}
+        ></div>
       </section>
 
       {/* Our Territory - Products (Redesigned: Gold cards on rich cream) */}
-      <section id="territory" className="relative py-40 px-6 bg-[#F3EAD3]">
+      <section id="territory" className="relative py-10 px-6 bg-[#F3EAD3]">
         <div className="relative max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -50 }}
@@ -1337,10 +1351,17 @@ const Index = () => {
             ))}
           </div>
         </div>
+        <div
+          className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to top, #FAF9F6 10%, transparent 100%)",
+          }}
+        ></div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative py-40 px-6 bg-white">
+      <section id="contact" className="relative py-10 px-6 bg-[#FAF9F6]">
         <div className="max-w-6xl mx-auto py-20">
           <div className="text-center mb-20">
             <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
@@ -1371,7 +1392,7 @@ const Index = () => {
         </div>
 
         <div
-          className="absolute top-90 left-0 h-[50vh] w-full pointer-events-none"
+          className="absolute top-90 left-0 h-[20vh] w-full pointer-events-none"
           style={{
             backdropFilter: "blur(12px)",
             WebkitBackdropFilter: "blur(12px)",
