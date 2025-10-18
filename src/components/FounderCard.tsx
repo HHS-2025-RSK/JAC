@@ -65,6 +65,19 @@
 
 import { motion } from "framer-motion";
 
+// Interface for the theme object
+interface FounderTheme {
+  lightBg: string;
+  headingColor: string;
+  titleColor: string;
+  gradientClasses: string;
+  textColor: string;
+  borderColor: string;
+  hoverBorder: string;
+  highlightColor: string;
+}
+
+// REMOVED 'image' from this interface
 interface FounderCardProps {
   name: string;
   title: string;
@@ -72,8 +85,7 @@ interface FounderCardProps {
   perk: string;
   powerMove: string;
   takeaway: string;
-  delay?: number;
-  image?: string;
+  theme: FounderTheme;
 }
 
 export const FounderCard = ({
@@ -83,55 +95,54 @@ export const FounderCard = ({
   perk,
   powerMove,
   takeaway,
-  delay = 0,
-  image,
+  theme,
 }: FounderCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay }}
-      whileHover={{ scale: 1.02, y: -5 }}
-      className="bg-white/40 backdrop-blur-md rounded-2xl border border-white/60 shadow-lg p-8 relative overflow-hidden group"
+      whileHover={{ y: -8, scale: 1.02 }}
+      className={`rounded-2xl shadow-lg border ${theme.borderColor} ${theme.hoverBorder}
+                 overflow-hidden w-full flex flex-col transition-all duration-300 h-full`}
     >
-      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary via-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      {/* Top section: Solid light color (Name, Title) */}
+      <div
+        className={`${theme.lightBg} p-8 text-center flex flex-col items-center`}
+      >
+        {/* --- IMAGE RENDERING BLOCK IS NOW GONE --- */}
 
-      <div className="relative z-10">
-        {image && (
-          <div className="flex justify-center mb-6">
-            <img 
-              src={image} 
-              alt={name}
-              className="w-32 h-32 rounded-full border-4 border-gradient-gold/20 shadow-lg"
-            />
-          </div>
-        )}
-        
-        <h3 className="text-4xl font-bold mb-2 text-gradient-gold text-center">{name}</h3>
-        <p className="text-primary text-base uppercase tracking-wider mb-6 text-center">
+        <h3 className={`text-4xl font-bold ${theme.headingColor}`}>{name}</h3>
+        <p
+          className={`text-base uppercase tracking-wider mt-1 ${theme.titleColor}`}
+        >
           {title}
         </p>
+      </div>
 
-        <div className="space-y-5 text-slate-600 text-lg">
-          <div>
-            <span className="text-primary font-semibold">Quirk:</span>
-            <p className="mt-1">{quirk}</p>
-          </div>
-
-          <div>
-            <span className="text-primary font-semibold">Perk:</span>
-            <p className="mt-1">{perk}</p>
-          </div>
-
-          <div>
-            <span className="text-primary font-semibold">Power Move:</span>
-            <p className="mt-1">{powerMove}</p>
-          </div>
-
-          <div className="pt-4 border-t border-slate-300/70">
-            <p className="text-base italic text-slate-500">{takeaway}</p>
-          </div>
+      {/* Bottom section: Light gradient (Details) */}
+      <div
+        className={`p-8 bg-gradient-to-b ${theme.gradientClasses} h-full flex flex-col`}
+      >
+        <div className={`space-y-5 ${theme.textColor} text-lg`}>
+          <p>
+            <span className={`font-semibold ${theme.highlightColor}`}>
+              Quirk:
+            </span>{" "}
+            {quirk}
+          </p>
+          <p>
+            <span className={`font-semibold ${theme.highlightColor}`}>
+              Perk:
+            </span>{" "}
+            {perk}
+          </p>
+          <p>
+            <span className={`font-semibold ${theme.highlightColor}`}>
+              Power Move:
+            </span>{" "}
+            {powerMove}
+          </p>
+        </div>
+        <div className={`pt-5 mt-auto border-t ${theme.borderColor}`}>
+          <p className="text-base italic">{takeaway}</p>
         </div>
       </div>
     </motion.div>

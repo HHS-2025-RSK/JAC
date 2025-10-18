@@ -853,6 +853,11 @@ import {
 import GradientScrollText from "@/components/GradientScrollText";
 import forestHero from "@/assets/forest-video.mp4";
 import HeroSection from "@/components/HeroSection";
+import { DenSection } from "@/components/DenSection";
+import { TerritorySection } from "@/components/TerritorySection";
+import { HuntSection } from "@/components/HuntSection";
+import { ContactSection } from "@/components/ContactSection";
+import { PackSection } from "@/components/PackSection";
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -987,13 +992,13 @@ const Index = () => {
             </div>
           </FadeInSection>
         </div>
-        <div
+        {/* <div
           className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
           style={{
             background:
               "linear-gradient(to top, #FAF9F6 10%, transparent 100%)",
           }}
-        ></div>
+        ></div> */}
       </section>
 
       {/* Legacy Section */}
@@ -1039,7 +1044,7 @@ const Index = () => {
       </section>
 
       {/* The Pack */}
-      <section id="pack" className="relative py-40 px-6 bg-[#F2E6CC]">
+      {/* <section id="pack" className="relative py-40 px-6 bg-[#F2E6CC]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
@@ -1125,10 +1130,12 @@ const Index = () => {
               "linear-gradient(to top, #FAF9F6 10%, transparent 100%)",
           }}
         ></div>
-      </section>
+      </section> */}
+
+      <PackSection />
 
       {/* Pack Philosophy */}
-      <section className="relative px-6 bg-[#FAF9F6]">
+      {/* <section className="relative px-6 bg-[#FAF9F6]">
         <div className="max-w-6xl mx-auto">
           <FadeInSection>
             <motion.div className="p-12">
@@ -1140,271 +1147,19 @@ const Index = () => {
             </motion.div>
           </FadeInSection>
         </div>
-      </section>
+      </section> */}
 
-      {/* The Hunt - Strategy (Redesigned: Gold-themed cards on rich cream) */}
-      <section id="hunt" className="relative py-20 px-6 bg-[#FAF9F6]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
-              The Hunt
-            </CinematicText>
+      {/* The Hunt */}
+      <HuntSection />
 
-            <FadeInSection delay={0.3}>
-              <p className="text-3xl md:text-4xl text-amber-800 font-bold mb-12">
-                Eyes on the horizon, focus on the target.
-              </p>
-              <p className="text-2xl md:text-3xl text-slate-700">
-                We track opportunity with precision, adapt to the terrain, and
-                strike only when the outcome matters.
-              </p>
-            </FadeInSection>
-          </div>
+      {/* The Den */}
+      <DenSection />
 
-          <FadeInSection delay={0.5}>
-            <div className="frosted-glass rounded-2xl p-12 md:p-16 shadow-xl border border-white/20">
-              {/* <h3 className="text-5xl md:text-6xl font-bold text-gradient-gold mb-10 text-center">
-                Strategy
-              </h3> */}
-              <p className="text-3xl md:text-4xl text-primary text-center mb-10 font-semibold">
-                Strategy | Consulting | Product Management | Hotel Management |
-                Marketing
-              </p>
-              <div className="space-y-8 text-2xl md:text-3xl text-slate-700">
-                <p>
-                  We work across industries that define the pace of progress.
-                  From consulting that builds clarity, to strategies that spark
-                  scale - from hospitality systems that evolve with people, to
-                  marketing that turns brands into belief.
-                </p>
-                <p>
-                  Every vertical we enter is approached with the same mindset -
-                  clarity, creativity, and commitment.
-                </p>
-                <p className="text-primary font-semibold text-center text-3xl md:text-4xl">
-                  We don't diversify to do more. We diversify to do better.
-                </p>
-              </div>
-            </div>
-          </FadeInSection>
-        </div>
-        <div
-          className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, #FAF9F6 10%, transparent 100%)",
-          }}
-        ></div>
-      </section>
-
-      {/* The Den (Redesigned: Gold timeline on white/light cream) */}
-      <section id="den" className="relative py-10 px-6 bg-[#FAF9F6]">
-        <div className="relative max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
-              The Den
-            </CinematicText>
-            <p className="text-3xl md:text-4xl text-amber-800 font-bold">
-              Strength built on knowledge, guided by instinct.
-            </p>
-          </motion.div>
-
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-amber-400 to-yellow-600 h-full rounded-full shadow-glow"></div>
-            {[
-              {
-                side: "left",
-                title: "Alumni Power",
-                desc: "Powered by alumni from ISB and IIIT Hyderabad - institutions known for transforming intelligence into impact.",
-                delay: 0.2,
-              },
-              {
-                side: "right",
-                title: "Collaboration Hub",
-                desc: "Here, intellect becomes our compass and collaboration, our hunt. It's where sharp minds gather, plans take shape, and every pursuit begins with purpose.",
-                delay: 0.4,
-              },
-              {
-                side: "left",
-                title: "Future Builders",
-                desc: "We don't just understand the future - we're building it, one product at a time.",
-                delay: 0.6,
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: item.side === "left" ? -100 : 100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: item.delay }}
-                className={`relative flex items-center mb-32 ${
-                  item.side === "left" ? "justify-start" : "justify-end"
-                }`}
-              >
-                <div
-                  className={`max-w-xl bg-[#F3EAD3] rounded-3xl p-10 shadow-2xl border border-amber-200 w-full md:w-1/2 ${
-                    item.side === "left" ? "mr-auto" : "ml-auto"
-                  }`}
-                >
-                  <h4 className="text-3xl font-bold text-gradient-gold mb-4">
-                    {item.title}
-                  </h4>
-                  <p className="text-xl text-amber-700 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-white shadow-lg"></div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-        <div
-          className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, #F3EAD3 10%, transparent 100%)",
-          }}
-        ></div>
-      </section>
-
-      {/* Our Territory - Products (Redesigned: Gold cards on rich cream) */}
-      <section id="territory" className="relative py-10 px-6 bg-[#F3EAD3]">
-        <div className="relative max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
-          >
-            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
-              Our Territory
-            </CinematicText>
-            <p className="text-2xl md:text-3xl text-amber-800 font-bold mb-12">
-              Where instinct turns into innovation. Our creations are the proof
-              of our hunt — built from instinct, sharpened by intellect, and
-              driven by purpose.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-16">
-            {[
-              {
-                title: "Staffari",
-                subtitle: "The Alpha Platform of Hospitality.",
-                desc: "Born from 'Staff' + 'Safari,' Staffari reimagines the future of hospitality. It's not just a staffing platform - it's a full-scale consulting and management ecosystem that transforms how hotels hire, operate, and grow. By integrating workforce intelligence, operational clarity, and strategic consulting, Staffari helps the industry move smarter and faster. Because in the hospitality world, true excellence isn't managed - it's mastered.",
-                icon: <Building2 className="w-16 h-16" />,
-                features: [
-                  "Workforce Intelligence",
-                  "Operational Clarity",
-                  "Strategic Consulting",
-                ],
-              },
-              {
-                title: "Shelfie",
-                subtitle: "Your Shelf. Your Story.",
-                desc: "Shelfie was born from the creative core of the den - inspired by those who live, write, and dream in stories. It's not just a space to read or write - it's where imagination moves, evolves, and keeps you chasing the next line. A haven for readers, writers, and thinkers, built for those who crave rhythm in words and magic in meaning. Shelfie isn't just for stories - it's an experience that draws you in, word by word, frame by frame.",
-                icon: <BookOpen className="w-16 h-16" />,
-                features: [
-                  "Imagination Hub",
-                  "Reader's Haven",
-                  "Writer's Rhythm",
-                ],
-              },
-            ].map((product, index) => (
-              <motion.div
-                key={product.title}
-                initial={{ opacity: 0, rotateY: -180 }}
-                whileInView={{ opacity: 1, rotateY: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                whileHover={{ rotateY: 10, scale: 1.03 }}
-                className="relative preserve-3d perspective-1000"
-              >
-                <div className="relative bg-white rounded-3xl p-10 h-full shadow-2xl border border-amber-200 transform-gpu transition-all duration-500 hover:shadow-amber-500/50">
-                  <div className="text-gradient-gold mb-6">{product.icon}</div>
-                  <h3 className="text-5xl font-bold text-amber-900 mb-2">
-                    {product.title}
-                  </h3>
-                  <p className="text-2xl text-amber-700 mb-6">
-                    {product.subtitle}
-                  </p>
-                  <p className="text-lg text-amber-800 mb-8">{product.desc}</p>
-                  <ul className="space-y-4">
-                    {product.features.map((feat) => (
-                      <motion.li
-                        key={feat}
-                        initial={{ x: -20, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
-                        className="flex items-center text-amber-700"
-                      >
-                        <ChevronRight className="w-5 h-5 mr-2 text-yellow-500" />
-                        {feat}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-              // Removed outer gradient p-1 for solid feel
-            ))}
-          </div>
-        </div>
-        <div
-          className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, #FAF9F6 10%, transparent 100%)",
-          }}
-        ></div>
-      </section>
+      {/* Our Territory */}
+      <TerritorySection />
 
       {/* Contact Section */}
-      <section id="contact" className="relative py-10 px-6 bg-[#FAF9F6]">
-        <div className="max-w-6xl mx-auto py-20">
-          <div className="text-center mb-20">
-            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
-              The Call of the Wild
-            </CinematicText>
-
-            <FadeInSection delay={0.3}>
-              <p className="text-2xl md:text-3xl text-amber-800 font-bold mb-12">
-                Where echoes become alliances.
-              </p>
-              <div className="max-w-3xl mx-auto space-y-8 text-2xl md:text-3xl text-slate-700">
-                <p>
-                  Every idea starts as a signal - a call sent out into the
-                  unknown. At JAC Magnus, we run toward those echoes that sound
-                  like purpose, creativity, and courage.
-                </p>
-                <p>
-                  If you feel the pull, follow it. Join us on this adventure -
-                  to build, create, and conquer new trails together.
-                </p>
-              </div>
-            </FadeInSection>
-          </div>
-
-          <motion.div whileHover={{ scale: 1.01 }}>
-            <ContactForm />
-          </motion.div>
-        </div>
-
-        <div
-          className="absolute top-90 left-0 h-[20vh] w-full pointer-events-none"
-          style={{
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            maskImage:
-              "linear-gradient(to bottom, black 60%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, black 60%, transparent 100%)",
-            background:
-              "linear-gradient(to bottom, white 50%, transparent 100%)",
-          }}
-        ></div>
-      </section>
+      <ContactSection />
 
       {/* Footer */}
       <footer className="relative pb-16 mt-24 px-6 border-slate-200 overflow-hidden">
