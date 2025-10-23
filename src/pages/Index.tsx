@@ -833,24 +833,10 @@
 
 // export default Index;
 
+// src/pages/Index.tsx
+// src/pages/Index.tsx
 import { useState, useEffect } from "react";
-import { CinematicText, FadeInSection } from "@/components/CinematicText";
-import { FounderCard } from "@/components/FounderCard";
-import { ProductCard } from "@/components/ProductCard";
-import { ContactForm } from "@/components/ContactForm";
-import { FallingLetters } from "@/components/FallingLetters";
 import { motion } from "framer-motion";
-import {
-  Building2,
-  BookOpen,
-  Menu,
-  X,
-  Target,
-  Zap,
-  Globe,
-  ChevronRight,
-} from "lucide-react";
-import GradientScrollText from "@/components/GradientScrollText";
 import forestHero from "@/assets/forest-video.mp4";
 import HeroSection from "@/components/HeroSection";
 import { DenSection } from "@/components/DenSection";
@@ -858,21 +844,38 @@ import { TerritorySection } from "@/components/TerritorySection";
 import { HuntSection } from "@/components/HuntSection";
 import { ContactSection } from "@/components/ContactSection";
 import { PackSection } from "@/components/PackSection";
+import { FallingLetters } from "@/components/FallingLetters";
+import { FadeInSection } from "@/components/CinematicText";
+import GradientScrollText from "@/components/GradientScrollText";
+import { Menu, X } from "lucide-react";
+import { SkewHighlight } from "@/components/SkewHighlight";
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [brandVisible, setBrandVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
+      const y = window.scrollY;
+      setScrolled(y > 400);
+      setBrandVisible(y > window.innerHeight * 0.6);
     };
-
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   const navItems = [
     { name: "Introduction", href: "#intro" },
@@ -885,297 +888,216 @@ const Index = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#FAF9F6] text-slate-800">
-      {/* Navigation Bar */}
-      <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
-        }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
+    <div className="relative min-h-screen text-slate-800 overflow-hidden">
+      {/* Site-wide Background Video (square-friendly, zoomed, full cover) */}
+      <motion.video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+        className="fixed inset-0 w-full h-full object-cover pointer-events-none z-0 origin-center transform-gpu brightness-[1.1] contrast-[1.15]"
+        initial={{ scale: 1.25 }}
+        animate={{ scale: 1.38 }}
+        transition={{ duration: 28, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <motion.h1
-            className="text-3xl font-bold text-gradient-gold tracking-wider"
-            whileHover={{ scale: 1.05 }}
-          >
-            JAC
-          </motion.h1>
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="text-lg font-medium text-slate-700 hover:text-gradient-gold transition-colors cursor-pointer"
-                whileHover={{ scale: 1.1 }}
-              >
-                {item.name}
-              </motion.a>
-            ))}
+        <source src={forestHero} type="video/mp4" />
+      </motion.video>
+
+      {/* Global overlay for readability */}
+      <div className="fixed inset-0 bg-black/35 z-0" />
+
+      {/* Main content above background */}
+      <div className="relative z-10">
+        {/* Navbar: single icon on all screens, brand appears after hero */}
+        <nav
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#022B16]/90 backdrop-blur-md shadow-lg" : "bg-transparent"
+            }`}
+        >
+          <div className="w-full mx-auto pl-6 pr-2 sm:pr-3 md:pr-4 py-2 flex items-center">
+            <h1
+              className={`text-3xl font-bold text-gradient-gold tracking-wider transition-opacity duration-300 select-none ${brandVisible ? "opacity-100" : "opacity-0"
+                }`}
+            >
+              JAC
+            </h1>
+
+            <button
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              className="ml-auto text-slate-400 transition-colors"
+              onClick={() => setMobileMenuOpen((s) => !s)}
+            >
+              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
           </div>
-          <button
-            className="md:hidden text-slate-700"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
+        </nav>
+
+
+        {/* Full-screen translucent menu overlay */}
         {mobileMenuOpen && (
-          <motion.div
-            className="md:hidden bg-white/95 backdrop-blur-md px-6 py-4"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-          >
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block py-2 text-lg font-medium text-slate-700 hover:text-gradient-gold cursor-pointer"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-          </motion.div>
+          <div className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm">
+            <button
+              aria-label="Close menu"
+              className="absolute top-5 right-5 text-white/90 hover:text-white transition"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <X size={28} />
+            </button>
+
+            <div className="absolute top-20 left-6 right-6 rounded-2xl bg-white/10 border border-white/20 shadow-2xl">
+              <ul className="divide-y divide-white/10">
+                {navItems.map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      className="block px-6 py-4 text-2xl text-white/90 hover:text-white tracking-wide"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         )}
-      </motion.nav>
 
-      {/* Hero Section */}
-      <HeroSection />
+        {/* Hero (text fades/scale-shifts on scroll) */}
+        <HeroSection />
+        {/* Introduction */}
+        <section id="intro" className="relative z-10">
+          <div className="relative mx-auto max-w-7xl px-6 pt-[5vh]">
+            <FadeInSection>
+              <div className="rounded-3xl px-6 md:px-10 py-6 md:py-8 bg-transparent">
+                {/* Line 1 */}
+                <GradientScrollText>
+                  <div className="rounded-3xl px-12 py-8 md:px-12 md:py-8 bg-white/85 shadow-xl border border-amber-100">
+                    <p className="text-slate-900 leading-tight">
+                      <span className="block text-[4vw] sm:text-2xl md:text-2xl text-center">
+                        We live in a world where everyone's building something, yet few know why.
+                      </span>
 
-      {/* Introduction */}
-      <section id="intro" className="relative z-10 pt-20">
-        <div
-          className="absolute bottom-0 left-0 h-[180vh] w-full"
-          style={{
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            maskImage: "linear-gradient(to top, black 60%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to top, black 60%, transparent 100%)",
-            background:
-              "linear-gradient(to top, #F3EAD3 50%, transparent 100%)",
-          }}
-        ></div>
-        <div className="relative mx-auto max-w-6xl px-6 pb-40 pt-[50vh]">
-          <FadeInSection>
-            <div className="rounded-3xl px-12 py-6 md:px-12 md:py-6 bg-white shadow-xl border border-amber-100">
-              <GradientScrollText>
-                We live in a world where everyone's building something - yet few
-                know why.
-              </GradientScrollText>
+                      {/* Bigger line */}
+                      <span className="block mt-8 md:mt-10 sm:text-4xl md:text-4xl font-black text-center">
+                        At <span className="text-[4vw] sm:text-4xl md:text-5xl font-black text-[#022B16]/80">JAC Magnus</span>, we build with purpose.
+                      </span>
+                      <span className="block mt-8 md:mt-10 text-[5.5vw] sm:text-5xl md:text-6xl font-black text-center">
+                        Every idea we create, every product we design, and every solution we deliver has meaning behind it.
+                      </span>
 
-              <GradientScrollText>
-                At JAC Magnus, we build with purpose. Every idea we create,
-                every product we design, and every solution we deliver has
-                meaning behind it.
-              </GradientScrollText>
+                      <span className="block mt-8 md:mt-10 text-[4vw] sm:text-4xl md:text-4xl text-center">
+                        We don't chase trends or noise.
+                      </span>
 
-              <GradientScrollText>
-                We don't chase trends or noise. We focus on what works -
-                refining, rethinking, and rebuilding until it feels right.
-              </GradientScrollText>
+                      <span className="block mt-8 md:mt-10 text-[4vw] sm:text-4xl md:text-4xl text-center">
+                        <span className="text-[4vw] sm:text-4xl md:text-5xl font-black">Refining, Rethinking, and Rebuilding</span>
+                      </span>
 
-              <GradientScrollText>
-                Our strength lies in doing ordinary things differently - with
-                sharper thinking, cleaner execution, and deeper intent.
-              </GradientScrollText>
+                      <span className="block mt-2 md:mt-2 text-[4vw] sm:text-4xl md:text-4xl text-center">
+                        <span>until it feels right.</span>
+                      </span>
 
-              <GradientScrollText>
-                <span style={{ display: "block", color: "#022B16" }}>
-                  And at the heart of it all is one unwavering belief - if it's
-                  not different, it's not Magnus.
-                </span>
-              </GradientScrollText>
-            </div>
-          </FadeInSection>
-        </div>
-        {/* <div
-          className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, #FAF9F6 10%, transparent 100%)",
-          }}
-        ></div> */}
-      </section>
+                      <span className="block mt-8 md:mt-10 text-[4vw] sm:text-4xl md:text-4xl text-center">
+                        And at the heart of it all is one unwavering belief, if it's not different, it's not Magnus.
+                      </span>
+                    </p>
+                  </div>
+                </GradientScrollText>
 
-      {/* Legacy Section */}
-      <section id="legacy" className="relative pt-5 pb-40 px-6 bg-[#FAF9F6]">
-        <div className="max-w-7xl mx-auto">
-          <FallingLetters />
 
-          <FadeInSection delay={0.3}>
-            <div className="rounded-2xl max-w-5xl mx-auto overflow-hidden shadow-2xl border border-slate-200">
-              <div className="bg-[#FDFBF3] px-12 md:px-16 py-8 md:py-8">
-                <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8">
-                  JAC Magnus isn't just a name - it's a story.
-                </p>
-                <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8">
-                  Each letter, J, A, and C, carries the name of the mothers who
-                  shaped the founders behind this company. Women whose strength,
-                  grace, and resilience became the foundation of everything we
-                  do.
-                </p>
-                <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8">
-                  JAC stands for gratitude - a daily reminder that before
-                  innovation comes intention, and before growth comes grounding.
-                </p>
+
+                {/* Line 2 */}
+                {/* <GradientScrollText>
+                  <p className="mb-3 md:mb-4 leading-tight">
+                    <SkewHighlight className="text-[4vw] sm:text-4xl md:text-4xl">
+                       At JAC Magnus, we build with purpose. Every idea we create, every product we design, and every solution we deliver has meaning behind it.
+                    </SkewHighlight>
+                  </p>
+                </GradientScrollText> */}
+
+                {/* Line 3 */}
+                {/* <GradientScrollText>
+                  <p className="mb-3 md:mb-4 leading-tight">
+                    <SkewHighlight className="text-[4vw] sm:text-4xl md:text-4xl">
+                  We don't chase trends or noise. We focus on what works - refining, rethinking, and rebuilding until it feels right.
+                    </SkewHighlight>
+                  </p>
+                </GradientScrollText> */}
+
+                {/* Line 4 (your original copy, styled the same) */}
+                {/* <GradientScrollText>
+                  <p className="mb-3 md:mb-4 leading-tight">
+                    <SkewHighlight className="text-[9vw] sm:text-5xl md:text-6xl">
+                  Our strength lies in doing ordinary things differently - with sharper thinking, cleaner execution, and deeper intent.
+                    </SkewHighlight>
+                  </p>
+                </GradientScrollText> */}
+
+                {/* Continue wrapping remaining sentences the same way */}
+                {/* <GradientScrollText>
+                  <p className="mb-3 md:mb-4 leading-tight">
+                    <SkewHighlight className="text-[4vw] sm:text-4xl text- md:text-4xl">
+                    And at the heart of it all is one unwavering belief - if it's not different, it's not Magnus.
+                    </SkewHighlight>
+                  </p>
+                </GradientScrollText> */}
               </div>
-
-              <div className="bg-[#022B16] p-6 md:p-6">
-                <p className="text-2xl md:text-3xl text-[#F3EAD3]/90 leading-relaxed font-semibold">
-                  Our name is our origin, our purpose, and our promise to build
-                  with heart, lead with integrity, and create with meaning.
-                  Because strength isn't loud. It's lasting!
-                </p>
-              </div>
-            </div>
-          </FadeInSection>
-        </div>
-        <div
-          className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, #F2E6CC 10%, transparent 100%)",
-          }}
-        ></div>
-      </section>
-
-      {/* The Pack */}
-      {/* <section id="pack" className="relative py-40 px-6 bg-[#F2E6CC]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
-              The Pack
-            </CinematicText>
-
-            <FadeInSection delay={0.3}>
-              <p className="text-3xl md:text-4xl text-amber-800 font-bold mb-12">
-                Three founders. One vision.
-              </p>
-              <p className="text-2xl md:text-3xl text-slate-700 mb-8 max-w-3xl mx-auto">
-                They didn't just build a company - they forged a force that
-                moves with purpose, precision, and pulse.
-              </p>
-              <p className="text-2xl md:text-3xl text-slate-700 mb-8">
-                Together, they're the equation that shouldn't work - but somehow
-                does.
-              </p>
             </FadeInSection>
           </div>
+        </section>
 
-          <div className="grid md:grid-cols-3 gap-12 mt-20">
-            <motion.div
-              whileHover={{ scale: 1.05, rotate: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <p className="text-2xl font-bold text-primary mb-6 text-center">
-                One sparks the fire
-              </p>
-              <FounderCard
-                name="Ryan"
-                title="The Trailblazer"
-                quirk="Treats every brainstorming session like a hunt - snacks optional, bold ideas mandatory."
-                perk="Can turn midnight chaos into sunrise strategy without breaking stride."
-                powerMove="Moves in silence but leaves tracks that redefine direction."
-                takeaway="The fire that leads the run."
-                delay={0.1}
-                image="https://api.dicebear.com/7.x/avataaars/svg?seed=Ryani&gender=male"
-              />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05, rotate: -1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <p className="text-2xl font-bold text-primary mb-6 text-center">
-                One commands the storm
-              </p>
-              <FounderCard
-                name="SK"
-                title="The Tempest"
-                quirk="Turns crisis meetings into comedy hours - yet somehow doubles productivity."
-                perk="Executes so sharply, the wilderness adjusts its pace."
-                powerMove="Commands pace, purpose, and pulse - and still finds time to make it all look effortless."
-                takeaway="The storm that drives the chase."
-                delay={0.2}
-                image="https://api.dicebear.com/7.x/avataaars/svg?seed=SK&gender=female"
-              />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05, rotate: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <p className="text-2xl font-bold text-primary mb-6 text-center">
-                One anchors the calm
-              </p>
-              <FounderCard
-                name="Seth"
-                title="The Silent Fang"
-                quirk="Replies three hours late but fixes what no one knew was broken - and probably the Wi-Fi too."
-                perk="Finds peace in code, poetry in precision, and stillness in systems."
-                powerMove="Operates at 1% volume, 100% impact - proof that calm isn't quiet, it's control."
-                takeaway="The calm that steadies the hunt."
-                delay={0.3}
-                image="https://api.dicebear.com/7.x/avataaars/svg?seed=Seth&gender=male"
-              />
-            </motion.div>
+
+        {/* Legacy */}
+        <section id="legacy" className="relative pb-10 px-6">
+          <div className="max-w-7xl mx-auto bg-[#FDFBF3]/95 pt-20 pb-16 px-6 md:px-12 rounded-3xl shadow-2xl border border-slate-200">
+            <FallingLetters />
+            <FadeInSection delay={0.3}>
+              <div className="rounded-2xl max-w-5xl mx-auto overflow-hidden shadow-2xl border border-slate-200">
+                <div className="bg-[#FDFBF3]/95 px-12 md:px-16 py-8 md:py-8">
+                  <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8 text-center">
+                    JAC Magnus isn't just a name - it's a story.
+                  </p>
+                  <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8 text-center">
+                    Each letter - J, A, and C, carries the name of the mothers who shaped the founders behind this company. Women whose strength, grace, and resilience became the foundation of everything we do.
+                  </p>
+                  <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed text-center font-semibold">
+                    JAC stands for gratitude
+                  </p>
+                  <p className="text-[20px] md:text-[25px] text-slate-800 leading-relaxed mb-8 text-center italic">
+                     a daily reminder that before innovation comes intention, and before growth comes grounding.
+                  </p>
+                </div>
+                <div className="bg-[#022B16]/95 p-6 md:p-6">
+                  <p className="text-2xl md:text-3xl text-[#F3EAD3]/90 leading-relaxed font-semibold text-center">
+                    Our name is our origin, our purpose, and our promise to build with heart, lead with integrity, and create with meaning. Because strength isn't loud. It's lasting!
+                  </p>
+                </div>
+              </div>
+            </FadeInSection>
           </div>
-        </div>
-        <div
-          className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, #FAF9F6 10%, transparent 100%)",
-          }}
-        ></div>
-      </section> */}
+        </section>
 
-      <PackSection />
+        {/* Sections */}
+        <PackSection />
+        <HuntSection />
+        <DenSection />
+        <TerritorySection />
+        <ContactSection />
 
-      {/* Pack Philosophy */}
-      {/* <section className="relative px-6 bg-[#FAF9F6]">
-        <div className="max-w-6xl mx-auto">
-          <FadeInSection>
-            <motion.div className="p-12">
-              <p className="text-2xl md:text-3xl text-slate-700 leading-relaxed italic">
-                JAC Magnus isn't powered by luck or noise - it's built on
-                instinct, discipline, and the belief that impossible isn't made
-                for us.
-              </p>
-            </motion.div>
-          </FadeInSection>
-        </div>
-      </section> */}
-
-      {/* The Hunt */}
-      <HuntSection />
-
-      {/* The Den */}
-      <DenSection />
-
-      {/* Our Territory */}
-      <TerritorySection />
-
-      {/* Contact Section */}
-      <ContactSection />
-
-      {/* Footer */}
-      <footer className="relative pb-16 mt-24 px-6 border-slate-200 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gradient-gold mb-4">
-            JAC Magnus Pvt. Ltd.
-          </h2>
-          <p className="text-xl text-primary">
-            Built Different. Wired for Impact.
-          </p>
-          <p className="text-sm text-slate-500 mt-8">
-            © {new Date().getFullYear()} JAC Magnus Pvt. Ltd. All rights
-            reserved.
-          </p>
-        </div>
-      </footer>
+        {/* Footer */}
+        <footer className="relative pb-16 mt-10">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-gradient-gold mb-4">
+              JAC Magnus Pvt. Ltd.
+            </h2>
+            <p className="text-xl text-primary">Built Different. Wired for Impact.</p>
+            <p className="text-sm text-slate-500 mt-8">
+              © {new Date().getFullYear()} JAC Magnus Pvt. Ltd. All rights reserved.
+            </p>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 };

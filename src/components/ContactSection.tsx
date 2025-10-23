@@ -7,8 +7,8 @@ import { CinematicText } from "./CinematicText";
 export const ContactSection = () => {
   return (
     // 1. Changed background to bg-gray-50
-    <section id="contact" className="relative py-10 px-6 bg-[#F2E6CC]">
-      <div className="max-w-6xl mx-auto py-20">
+    <section id="contact" className="relative mb-10">
+      <div className="max-w-7xl mx-auto bg-[#FDFBF3]/95 pt-20 pb-10 px-6 md:px-12 rounded-3xl shadow-2xl border border-slate-200">
         <div className="text-center mb-20">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -63,8 +63,12 @@ export const ContactSection = () => {
             <ContactForm />
           </div>
         </motion.div>
+      
+          <span className="block mt-8 text-3xl text-center text-slate-700 italic">
+            Our strength lies in doing ordinary things differently - with sharper thinking, cleaner execution, and deeper intent.
+          </span>
       </div>
-      <div
+      {/* <div
         className="absolute top-90 left-0 h-[20vh] w-full pointer-events-none"
         style={{
           backdropFilter: "blur(12px)",
@@ -75,7 +79,7 @@ export const ContactSection = () => {
           background:
             "linear-gradient(to bottom, #F2E6CC 50%, transparent 100%)",
         }}
-      ></div>
+      ></div> */}
     </section>
   );
 };

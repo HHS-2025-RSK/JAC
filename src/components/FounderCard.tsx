@@ -86,6 +86,7 @@ interface FounderCardProps {
   powerMove: string;
   takeaway: string;
   theme: FounderTheme;
+  className?: string;
 }
 
 export const FounderCard = ({

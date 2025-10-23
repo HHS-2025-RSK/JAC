@@ -41,15 +41,16 @@ export const CinematicText = ({
   };
 
   return (
+    // CinematicText.tsx (uniform gap)
     <motion.div
-      className={`${className} ${gradient ? "text-gradient-gold" : ""}`}
+      className={`${className} ${gradient ? "text-gradient-gold" : ""} inline-flex flex-wrap items-baseline gap-x-6 md:gap-x-8 text-center`}
       variants={container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
     >
       {words.map((word, index) => (
-        <motion.span key={index} variants={child} className="inline-block mr-2">
+        <motion.span key={index} variants={child} className="">
           {word}
         </motion.span>
       ))}

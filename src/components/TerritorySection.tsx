@@ -95,8 +95,8 @@ const productList = [
 export const TerritorySection = () => {
   return (
     // Changed bg to bg-gray-50 for smooth transition from previous section
-    <section id="territory" className="relative py-10 px-6 bg-gray-50">
-      <div className="relative max-w-7xl mx-auto">
+    <section id="territory" className="relative mb-10">
+      <div className="relative max-w-7xl mx-auto max-w-7xl bg-[#FDFBF3]/95 pt-20 pb-16 px-6 md:px-12 rounded-3xl shadow-2xl border border-slate-200">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}

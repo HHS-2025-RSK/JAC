@@ -109,9 +109,9 @@ export const DenSection = () => {
   return (
     <section
       id="den"
-      className="relative py-10 px-6 bg-[#F2E6CC] text-slate-900"
+      className="relative mb-10"
     >
-      <div className="relative max-w-6xl mx-auto">
+      <div className="mx-auto max-w-7xl bg-[#FDFBF3]/95 pt-20 pb-16 px-6 md:px-12 rounded-3xl shadow-2xl border border-slate-200">
         {/* --- Header Block --- */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

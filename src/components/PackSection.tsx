@@ -78,8 +78,8 @@ const founders = [
 
 export const PackSection = () => {
   return (
-    <section id="pack" className="relative py-20 px-6 bg-[#F2E6CC]">
-      <div className="max-w-7xl mx-auto">
+    <section id="pack" className="relative mb-10">
+      <div className="max-w-7xl mx-auto bg-[#FDFBF3]/95 pt-20 pb-16 px-6 md:px-12 rounded-3xl shadow-2xl border border-slate-200">
         {/* ... (Header text remains the same) ... */}
         <div className="text-center mb-20">
           <motion.div
@@ -127,7 +127,7 @@ export const PackSection = () => {
                 className="w-40 h-40 mb-4" // Adjust size as needed
               />
 
-              <p className="text-3xl font-bold text-slate-800 mb-6 text-center">
+              <p className="text-2xl font-bold text-slate-800 mb-6 text-center">
                 {founder.description}
               </p>
 
@@ -144,10 +144,9 @@ export const PackSection = () => {
             </motion.div>
           ))}
         </div>
-      </div>
-      <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto">
         <FadeInSection>
-          <motion.div className="pt-12">
+          <motion.div className="pt-12 text-center">
             <p className="text-2xl md:text-3xl text-slate-700 leading-relaxed italic">
               JAC Magnus isn't powered by luck or noise - it's built on
               instinct, discipline, and the belief that impossible isn't made
@@ -155,6 +154,7 @@ export const PackSection = () => {
             </p>
           </motion.div>
         </FadeInSection>
+      </div>
       </div>
       {/* ... (Bottom gradient div remains the same) ... */}
       {/* <div

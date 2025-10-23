@@ -7,8 +7,8 @@ import { CinematicText } from "./CinematicText";
 export const HuntSection = () => {
   return (
     // 1. Changed background to bg-gray-50 for seamless transition
-    <section id="hunt" className="relative py-20 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
+    <section id="hunt" className="relative mb-10">
+      <div className="max-w-7xl mx-auto bg-[#FDFBF3]/95 pt-20 pb-16 px-6 md:px-12 rounded-3xl shadow-2xl border border-slate-200">
         <div className="text-center mb-20">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -48,7 +48,7 @@ export const HuntSection = () => {
           >
             {/* Top section: Solid light color for the keywords */}
             <div className="bg-emerald-100 p-10">
-              <p className="text-3xl md:text-4xl text-emerald-900 text-center font-bold">
+              <p className="text-2xl md:text-3xl text-emerald-900 text-center font-bold">
                 Strategy | Consulting | Product Management | Hotel Management |
                 Marketing
               </p>
