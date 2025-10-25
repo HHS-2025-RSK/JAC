@@ -1055,9 +1055,11 @@ const Index = () => {
                   <p className="text-xl sm:text-2xl md:text-3xl text-slate-800 leading-relaxed text-center font-semibold">
                     JAC stands for gratitude
                   </p>
-                  <p className="text-lg sm:text-xl md:text-2xl text-slate-800 leading-relaxed mb-6 sm:mb-8 text-center italic">
-                    a daily reminder that before innovation comes intention, and
-                    before growth comes grounding.
+                  <p className="mt-2 text-lg sm:text-xl md:text-2xl text-slate-800 leading-relaxed mb-6 sm:mb-8 text-center italic">
+                    a daily reminder that before innovation comes intention, and{" "}
+                    <span className="inline">
+                      before growth comes grounding.
+                    </span>
                   </p>
                 </div>
                 <div className="bg-[#022B16]/95 p-5 sm:p-6">
