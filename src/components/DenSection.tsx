@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { CinematicText } from "./CinematicText";
-// Assuming you have a <CinematicText> component
 
-// --- Icon Components (Placeholders) ---
-// These now just define the shape. Colors will be passed via className.
+// --- Icon Components ---
 const AlumniIcon = ({ className }) => (
   <svg
     className={className}
@@ -58,10 +56,9 @@ const FutureIcon = ({ className }) => (
 );
 
 // --- Data for the grid layout ---
-// Each item now has its own theme object
 const denItems = [
   {
-    icon: AlumniIcon, // Pass the component reference
+    icon: AlumniIcon,
     title: "Alumni Power",
     desc: "Powered by alumni from ISB and IIIT Hyderabad - institutions known for transforming intelligence into impact.",
     delay: 0.2,
@@ -94,42 +91,37 @@ const denItems = [
     desc: "We don't just understand the future - we're building it, one product at a time.",
     delay: 0.6,
     theme: {
-      darkBg: "bg-amber-700", // Dark brown/gold
+      darkBg: "bg-amber-700",
       iconColor: "text-amber-200",
       headingColor: "text-white",
       gradientClasses: "from-amber-50 to-amber-100",
-      textColor: "text-amber-900", // Dark brown
+      textColor: "text-amber-900",
       hoverBorder: "hover:border-amber-300",
     },
   },
 ];
 
-// --- Your New Component ---
 export const DenSection = () => {
   return (
-    <section
-      id="den"
-      className="relative mb-10"
-    >
-      <div className="mx-auto max-w-7xl bg-[#FDFBF3]/95 pt-20 pb-16 px-6 md:px-12 rounded-3xl shadow-2xl border border-slate-200">
-        {/* --- Header Block --- */}
+    <section id="den" className="relative mb-10 px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl bg-[#FDFBF3]/95 pt-16 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 md:px-12 rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200">
+        {/* Header Block */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 md:mb-20"
         >
-          <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
+          <CinematicText className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6 text-slate-900">
             The Den
           </CinematicText>
-          <p className="text-3xl md:text-4xl text-amber-800 font-bold">
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-amber-800 font-bold px-2">
             Strength built on knowledge, guided by instinct.
           </p>
         </motion.div>
-        {/* --- End of Header Block --- */}
 
-        {/* --- START OF NEW UI (Multi-Theme Grid) --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 md:gap-8">
           {denItems.map((item, index) => (
             <motion.div
               key={index}
@@ -142,29 +134,28 @@ export const DenSection = () => {
                 className={`bg-white rounded-xl shadow-md border border-gray-200 w-full flex flex-col overflow-hidden
                            transition-all duration-300 ${item.theme.hoverBorder} hover:-translate-y-1`}
               >
-                {/* Top section: Icon and Heading on one line */}
+                {/* Top section: Icon and Heading */}
                 <div
-                  className={`p-8 flex flex-row items-center rounded-t-xl ${item.theme.darkBg}`}
+                  className={`p-5 sm:p-6 md:p-8 flex flex-row items-center rounded-t-xl ${item.theme.darkBg}`}
                 >
-                  <div>
-                    {/* Render the icon component and pass in the theme colors */}
+                  <div className="flex-shrink-0">
                     <item.icon
-                      className={`w-10 h-10 ${item.theme.iconColor}`}
+                      className={`w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 ${item.theme.iconColor}`}
                     />
                   </div>
                   <h4
-                    className={`text-2xl font-bold ml-4 ${item.theme.headingColor}`}
+                    className={`text-lg sm:text-xl md:text-2xl font-bold ml-3 sm:ml-4 ${item.theme.headingColor}`}
                   >
                     {item.title}
                   </h4>
                 </div>
 
-                {/* Bottom section: Light gradient background */}
+                {/* Bottom section: Description */}
                 <div
-                  className={`p-8 flex-grow bg-gradient-to-r ${item.theme.gradientClasses}`}
+                  className={`p-5 sm:p-6 md:p-8 flex-grow bg-gradient-to-r ${item.theme.gradientClasses}`}
                 >
                   <p
-                    className={`text-lg ${item.theme.textColor} leading-relaxed font-semibold`}
+                    className={`text-base sm:text-lg md:text-xl ${item.theme.textColor} leading-relaxed font-semibold`}
                   >
                     {item.desc}
                   </p>
@@ -173,7 +164,6 @@ export const DenSection = () => {
             </motion.div>
           ))}
         </div>
-        {/* --- END OF NEW UI --- */}
       </div>
     </section>
   );

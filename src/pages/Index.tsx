@@ -848,7 +848,6 @@ import { FallingLetters } from "@/components/FallingLetters";
 import { FadeInSection } from "@/components/CinematicText";
 import GradientScrollText from "@/components/GradientScrollText";
 import { Menu, X } from "lucide-react";
-import { SkewHighlight } from "@/components/SkewHighlight";
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -889,7 +888,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen text-slate-800 overflow-hidden">
-      {/* Site-wide Background Video (square-friendly, zoomed, full cover) */}
+      {/* Site-wide Background Video */}
       <motion.video
         autoPlay
         loop
@@ -900,58 +899,70 @@ const Index = () => {
         className="fixed inset-0 w-full h-full object-cover pointer-events-none z-0 origin-center transform-gpu brightness-[1.1] contrast-[1.15]"
         initial={{ scale: 1.25 }}
         animate={{ scale: 1.38 }}
-        transition={{ duration: 28, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
+        transition={{
+          duration: 28,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "mirror",
+        }}
       >
         <source src={forestHero} type="video/mp4" />
       </motion.video>
 
-      {/* Global overlay for readability */}
+      {/* Global overlay */}
       <div className="fixed inset-0 bg-black/35 z-0" />
 
-      {/* Main content above background */}
+      {/* Main content */}
       <div className="relative z-10">
-        {/* Navbar: single icon on all screens, brand appears after hero */}
+        {/* Navbar */}
         <nav
-          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-[#022B16]/90 backdrop-blur-md shadow-lg" : "bg-transparent"
-            }`}
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            scrolled
+              ? "bg-[#022B16]/90 backdrop-blur-md shadow-lg"
+              : "bg-transparent"
+          }`}
         >
-          <div className="w-full mx-auto pl-6 pr-2 sm:pr-3 md:pr-4 py-2 flex items-center">
+          <div className="w-full mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center">
             <h1
-              className={`text-3xl font-bold text-gradient-gold tracking-wider transition-opacity duration-300 select-none ${brandVisible ? "opacity-100" : "opacity-0"
-                }`}
+              className={`text-2xl sm:text-3xl md:text-4xl font-bold text-gradient-gold tracking-wider transition-opacity duration-300 select-none ${
+                brandVisible ? "opacity-100" : "opacity-0"
+              }`}
             >
               JAC
             </h1>
 
             <button
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              className="ml-auto text-slate-400 transition-colors"
+              className="ml-auto text-slate-400 hover:text-slate-200 transition-colors"
               onClick={() => setMobileMenuOpen((s) => !s)}
             >
-              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {mobileMenuOpen ? (
+                <X size={24} className="sm:w-7 sm:h-7" />
+              ) : (
+                <Menu size={24} className="sm:w-7 sm:h-7" />
+              )}
             </button>
           </div>
         </nav>
 
-
-        {/* Full-screen translucent menu overlay */}
+        {/* Full-screen menu overlay */}
         {mobileMenuOpen && (
           <div className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm">
             <button
               aria-label="Close menu"
-              className="absolute top-5 right-5 text-white/90 hover:text-white transition"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/90 hover:text-white transition"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <X size={28} />
+              <X size={28} className="sm:w-8 sm:h-8" />
             </button>
 
-            <div className="absolute top-20 left-6 right-6 rounded-2xl bg-white/10 border border-white/20 shadow-2xl">
+            <div className="absolute top-16 sm:top-20 left-4 right-4 sm:left-6 sm:right-6 rounded-2xl bg-white/10 border border-white/20 shadow-2xl">
               <ul className="divide-y divide-white/10">
                 {navItems.map((item) => (
                   <li key={item.name}>
                     <a
                       href={item.href}
-                      className="block px-6 py-4 text-2xl text-white/90 hover:text-white tracking-wide"
+                      className="block px-4 sm:px-6 py-3 sm:py-4 text-xl sm:text-2xl text-white/90 hover:text-white tracking-wide transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -963,114 +974,97 @@ const Index = () => {
           </div>
         )}
 
-        {/* Hero (text fades/scale-shifts on scroll) */}
+        {/* Hero */}
         <HeroSection />
+
         {/* Introduction */}
         <section id="intro" className="relative z-10">
-          <div className="relative mx-auto max-w-7xl px-6 pt-[5vh]">
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-[5vh]">
             <FadeInSection>
-              <div className="rounded-3xl px-6 md:px-10 py-6 md:py-8 bg-transparent">
-                {/* Line 1 */}
+              <div className="rounded-2xl sm:rounded-3xl px-4 sm:px-6 md:px-10 py-6 md:py-8 bg-transparent">
                 <GradientScrollText>
-                  <div className="rounded-3xl px-12 py-8 md:px-12 md:py-8 bg-white/85 shadow-xl border border-amber-100">
+                  <div className="rounded-2xl sm:rounded-3xl px-6 sm:px-8 md:px-12 py-6 sm:py-7 md:py-8 bg-white/85 shadow-xl border border-amber-100">
                     <p className="text-slate-900 leading-tight">
-                      <span className="block text-[4vw] sm:text-2xl md:text-2xl text-center">
-                        We live in a world where everyone's building something, yet few know why.
+                      {/* Line 1 - Regular text */}
+                      <span className="block text-base sm:text-xl md:text-2xl text-center">
+                        We live in a world where everyone's building something,
+                        yet few know why.
                       </span>
 
-                      {/* Bigger line */}
-                      <span className="block mt-8 md:mt-10 sm:text-4xl md:text-4xl font-black text-center">
-                        At <span className="text-[4vw] sm:text-4xl md:text-5xl font-black text-[#022B16]/80">JAC Magnus</span>, we build with purpose.
-                      </span>
-                      <span className="block mt-8 md:mt-10 text-[5.5vw] sm:text-5xl md:text-6xl font-black text-center">
-                        Every idea we create, every product we design, and every solution we deliver has meaning behind it.
+                      {/* Line 2 - JAC Magnus bigger */}
+                      <span className="block mt-6 sm:mt-8 md:mt-10 text-2xl sm:text-3xl md:text-4xl font-black text-center">
+                        At{" "}
+                        <span className="text-3xl sm:text-4xl md:text-5xl font-black text-gradient-gold">
+                          JAC Magnus
+                        </span>
+                        , we build with purpose.
                       </span>
 
-                      <span className="block mt-8 md:mt-10 text-[4vw] sm:text-4xl md:text-4xl text-center">
+                      {/* Line 3 - Biggest emphasis */}
+                      <span className="block mt-6 sm:mt-8 md:mt-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-center">
+                        Every idea we create, every product we design, and every
+                        solution we deliver has meaning behind it.
+                      </span>
+
+                      {/* Line 4 - Regular */}
+                      <span className="block mt-6 sm:mt-8 md:mt-10 text-2xl sm:text-3xl md:text-4xl text-center">
                         We don't chase trends or noise.
                       </span>
 
-                      <span className="block mt-8 md:mt-10 text-[4vw] sm:text-4xl md:text-4xl text-center">
-                        <span className="text-[4vw] sm:text-4xl md:text-5xl font-black">Refining, Rethinking, and Rebuilding</span>
+                      {/* Line 5 - Bold emphasis */}
+                      <span className="block mt-6 sm:mt-8 md:mt-10 text-2xl sm:text-3xl md:text-4xl text-center">
+                        <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">
+                          Refining, Rethinking, and Rebuilding
+                        </span>
                       </span>
 
-                      <span className="block mt-2 md:mt-2 text-[4vw] sm:text-4xl md:text-4xl text-center">
-                        <span>until it feels right.</span>
+                      {/* Line 6 - Continuation */}
+                      <span className="block mt-2 text-2xl sm:text-3xl md:text-4xl text-center">
+                        until it feels right.
                       </span>
 
-                      <span className="block mt-8 md:mt-10 text-[4vw] sm:text-4xl md:text-4xl text-center">
-                        And at the heart of it all is one unwavering belief, if it's not different, it's not Magnus.
+                      {/* Line 7 - Closing statement */}
+                      <span className="block mt-6 sm:mt-8 md:mt-10 text-2xl sm:text-3xl md:text-4xl text-center">
+                        And at the heart of it all is one unwavering belief: if
+                        it's not different, it's not Magnus.
                       </span>
                     </p>
                   </div>
                 </GradientScrollText>
-
-
-
-                {/* Line 2 */}
-                {/* <GradientScrollText>
-                  <p className="mb-3 md:mb-4 leading-tight">
-                    <SkewHighlight className="text-[4vw] sm:text-4xl md:text-4xl">
-                       At JAC Magnus, we build with purpose. Every idea we create, every product we design, and every solution we deliver has meaning behind it.
-                    </SkewHighlight>
-                  </p>
-                </GradientScrollText> */}
-
-                {/* Line 3 */}
-                {/* <GradientScrollText>
-                  <p className="mb-3 md:mb-4 leading-tight">
-                    <SkewHighlight className="text-[4vw] sm:text-4xl md:text-4xl">
-                  We don't chase trends or noise. We focus on what works - refining, rethinking, and rebuilding until it feels right.
-                    </SkewHighlight>
-                  </p>
-                </GradientScrollText> */}
-
-                {/* Line 4 (your original copy, styled the same) */}
-                {/* <GradientScrollText>
-                  <p className="mb-3 md:mb-4 leading-tight">
-                    <SkewHighlight className="text-[9vw] sm:text-5xl md:text-6xl">
-                  Our strength lies in doing ordinary things differently - with sharper thinking, cleaner execution, and deeper intent.
-                    </SkewHighlight>
-                  </p>
-                </GradientScrollText> */}
-
-                {/* Continue wrapping remaining sentences the same way */}
-                {/* <GradientScrollText>
-                  <p className="mb-3 md:mb-4 leading-tight">
-                    <SkewHighlight className="text-[4vw] sm:text-4xl text- md:text-4xl">
-                    And at the heart of it all is one unwavering belief - if it's not different, it's not Magnus.
-                    </SkewHighlight>
-                  </p>
-                </GradientScrollText> */}
               </div>
             </FadeInSection>
           </div>
         </section>
 
-
         {/* Legacy */}
-        <section id="legacy" className="relative pb-10 px-6">
-          <div className="max-w-7xl mx-auto bg-[#FDFBF3]/95 pt-20 pb-16 px-6 md:px-12 rounded-3xl shadow-2xl border border-slate-200">
+        <section id="legacy" className="relative pb-10 px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto bg-[#FDFBF3]/95 pt-16 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 md:px-12 rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200">
             <FallingLetters />
             <FadeInSection delay={0.3}>
-              <div className="rounded-2xl max-w-5xl mx-auto overflow-hidden shadow-2xl border border-slate-200">
-                <div className="bg-[#FDFBF3]/95 px-12 md:px-16 py-8 md:py-8">
-                  <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8 text-center">
+              <div className="rounded-xl sm:rounded-2xl max-w-5xl mx-auto overflow-hidden shadow-2xl border border-slate-200">
+                <div className="bg-[#FDFBF3]/95 px-6 sm:px-8 md:px-12 lg:px-16 py-6 sm:py-7 md:py-8">
+                  <p className="text-xl sm:text-2xl md:text-3xl text-slate-800 leading-relaxed mb-6 sm:mb-8 text-center">
                     JAC Magnus isn't just a name - it's a story.
                   </p>
-                  <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed mb-8 text-center">
-                    Each letter - J, A, and C, carries the name of the mothers who shaped the founders behind this company. Women whose strength, grace, and resilience became the foundation of everything we do.
+                  <p className="text-xl sm:text-2xl md:text-3xl text-slate-800 leading-relaxed mb-6 sm:mb-8 text-center">
+                    Each letter - J, A, and C, carries the name of the mothers
+                    who shaped the founders behind this company. Women whose
+                    strength, grace, and resilience became the foundation of
+                    everything we do.
                   </p>
-                  <p className="text-2xl md:text-3xl text-slate-800 leading-relaxed text-center font-semibold">
+                  <p className="text-xl sm:text-2xl md:text-3xl text-slate-800 leading-relaxed text-center font-semibold">
                     JAC stands for gratitude
                   </p>
-                  <p className="text-[20px] md:text-[25px] text-slate-800 leading-relaxed mb-8 text-center italic">
-                     a daily reminder that before innovation comes intention, and before growth comes grounding.
+                  <p className="text-lg sm:text-xl md:text-2xl text-slate-800 leading-relaxed mb-6 sm:mb-8 text-center italic">
+                    a daily reminder that before innovation comes intention, and
+                    before growth comes grounding.
                   </p>
                 </div>
-                <div className="bg-[#022B16]/95 p-6 md:p-6">
-                  <p className="text-2xl md:text-3xl text-[#F3EAD3]/90 leading-relaxed font-semibold text-center">
-                    Our name is our origin, our purpose, and our promise to build with heart, lead with integrity, and create with meaning. Because strength isn't loud. It's lasting!
+                <div className="bg-[#022B16]/95 p-5 sm:p-6">
+                  <p className="text-xl sm:text-2xl md:text-3xl text-[#F3EAD3]/90 leading-relaxed font-semibold text-center">
+                    Our name is our origin, our purpose, and our promise to
+                    build with heart, lead with integrity, and create with
+                    meaning. Because strength isn't loud. It's lasting!
                   </p>
                 </div>
               </div>
@@ -1086,14 +1080,17 @@ const Index = () => {
         <ContactSection />
 
         {/* Footer */}
-        <footer className="relative pb-16 mt-10">
+        <footer className="relative pb-12 sm:pb-16 mt-10 px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-gradient-gold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient-gold mb-3 sm:mb-4">
               JAC Magnus Pvt. Ltd.
             </h2>
-            <p className="text-xl text-primary">Built Different. Wired for Impact.</p>
-            <p className="text-sm text-slate-500 mt-8">
-              © {new Date().getFullYear()} JAC Magnus Pvt. Ltd. All rights reserved.
+            <p className="text-lg sm:text-xl text-primary">
+              Built Different. Wired for Impact.
+            </p>
+            <p className="text-xs sm:text-sm text-slate-500 mt-6 sm:mt-8">
+              © {new Date().getFullYear()} JAC Magnus Pvt. Ltd. All rights
+              reserved.
             </p>
           </div>
         </footer>

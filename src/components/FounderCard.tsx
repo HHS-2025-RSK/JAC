@@ -77,7 +77,6 @@ interface FounderTheme {
   highlightColor: string;
 }
 
-// REMOVED 'image' from this interface
 interface FounderCardProps {
   name: string;
   title: string;
@@ -104,12 +103,10 @@ export const FounderCard = ({
       className={`rounded-2xl shadow-lg border ${theme.borderColor} ${theme.hoverBorder}
                  overflow-hidden w-full flex flex-col transition-all duration-300 h-full`}
     >
-      {/* Top section: Solid light color (Name, Title) */}
+      {/* Top section: Solid light color (Name, Title) - FIXED HEIGHT */}
       <div
-        className={`${theme.lightBg} p-8 text-center flex flex-col items-center`}
+        className={`${theme.lightBg} p-8 text-center flex flex-col items-center min-h-[140px]`}
       >
-        {/* --- IMAGE RENDERING BLOCK IS NOW GONE --- */}
-
         <h3 className={`text-4xl font-bold ${theme.headingColor}`}>{name}</h3>
         <p
           className={`text-base uppercase tracking-wider mt-1 ${theme.titleColor}`}
@@ -118,31 +115,31 @@ export const FounderCard = ({
         </p>
       </div>
 
-      {/* Bottom section: Light gradient (Details) */}
+      {/* Bottom section: Light gradient (Details) - FLEX GROW */}
       <div
-        className={`p-8 bg-gradient-to-b ${theme.gradientClasses} h-full flex flex-col`}
+        className={`p-8 bg-gradient-to-b ${theme.gradientClasses} flex-1 flex flex-col`}
       >
-        <div className={`space-y-5 ${theme.textColor} text-lg`}>
-          <p>
+        <div className={`space-y-5 ${theme.textColor} text-lg flex-1`}>
+          <p className="min-h-[80px]">
             <span className={`font-semibold ${theme.highlightColor}`}>
               Quirk:
             </span>{" "}
             {quirk}
           </p>
-          <p>
+          <p className="min-h-[80px]">
             <span className={`font-semibold ${theme.highlightColor}`}>
               Perk:
             </span>{" "}
             {perk}
           </p>
-          <p>
+          <p className="min-h-[80px]">
             <span className={`font-semibold ${theme.highlightColor}`}>
               Power Move:
             </span>{" "}
             {powerMove}
           </p>
         </div>
-        <div className={`pt-5 mt-auto border-t ${theme.borderColor}`}>
+        <div className={`pt-5 mt-4 border-t ${theme.borderColor}`}>
           <p className="text-base italic">{takeaway}</p>
         </div>
       </div>

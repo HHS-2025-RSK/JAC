@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { FounderCard } from "./FounderCard"; // Assuming FounderCard is in the same folder
+import { FounderCard } from "./FounderCard";
 import { CinematicText, FadeInSection } from "./CinematicText";
-// Assuming you have a <CinematicText> component
 
 // --- Data for the grid layout with themes ---
 const founders = [
@@ -13,7 +12,6 @@ const founders = [
     perk: "Can turn midnight chaos into sunrise strategy without breaking stride.",
     powerMove: "Moves in silence but leaves tracks that redefine direction.",
     takeaway: "The fire that leads the run.",
-    // This is the SINGLE bitmoji image URL
     image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ryani&scale=80",
     delay: 0.1,
     description: "One sparks the fire",
@@ -78,16 +76,16 @@ const founders = [
 
 export const PackSection = () => {
   return (
-    <section id="pack" className="relative mb-10">
-      <div className="max-w-7xl mx-auto bg-[#FDFBF3]/95 pt-20 pb-16 px-6 md:px-12 rounded-3xl shadow-2xl border border-slate-200">
-        {/* ... (Header text remains the same) ... */}
-        <div className="text-center mb-20">
+    <section id="pack" className="relative mb-10 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto bg-[#FDFBF3]/95 pt-16 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 md:px-12 rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200">
+        {/* Header text */}
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <CinematicText className="text-7xl md:text-9xl font-black mb-6 text-slate-900">
+            <CinematicText className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6 text-slate-900">
               The Pack
             </CinematicText>
           </motion.div>
@@ -97,72 +95,71 @@ export const PackSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="text-3xl md:text-4xl text-amber-800 font-bold mb-12">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-amber-800 font-bold mb-8 sm:mb-10 md:mb-12">
               Three founders. One vision.
             </p>
-            <p className="text-2xl md:text-3xl text-slate-700 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-700 mb-6 sm:mb-8 max-w-3xl mx-auto px-2">
               They didn't just build a company - they forged a force that moves
               with purpose, precision, and pulse.
             </p>
-            <p className="text-2xl md:text-3xl text-slate-700 mb-8">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-700 mb-6 sm:mb-8 px-2">
               Together, they're the equation that shouldn't work - but somehow
               does.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 mt-20">
+        {/* Founder cards grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 mt-12 sm:mt-16 md:mt-20">
           {founders.map((founder) => (
             <motion.div
               key={founder.name}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: founder.delay }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center h-full"
             >
-              {/* --- HERE IS THE SINGLE BITMOJI IMAGE --- */}
+              {/* Bitmoji Image - Responsive size */}
               <img
                 src={founder.image}
                 alt={`${founder.name} bitmoji`}
-                className="w-40 h-40 mb-4" // Adjust size as needed
+                className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 object-contain mb-3 sm:mb-4"
               />
 
-              <p className="text-2xl font-bold text-slate-800 mb-6 text-center">
+              {/* Description - Responsive height for alignment */}
+              <p className="text-lg sm:text-xl md:text-2xl font-bold text-slate-800 text-center min-h-[60px] sm:min-h-[70px] flex items-center justify-center mb-4 sm:mb-6 px-2">
                 {founder.description}
               </p>
 
-              {/* We pass all props EXCEPT the image, as it's not needed inside the card */}
-              <FounderCard
-                name={founder.name}
-                title={founder.title}
-                quirk={founder.quirk}
-                perk={founder.perk}
-                powerMove={founder.powerMove}
-                takeaway={founder.takeaway}
-                theme={founder.theme}
-              />
+              {/* Card - Takes remaining space */}
+              <div className="w-full flex-1">
+                <FounderCard
+                  name={founder.name}
+                  title={founder.title}
+                  quirk={founder.quirk}
+                  perk={founder.perk}
+                  powerMove={founder.powerMove}
+                  takeaway={founder.takeaway}
+                  theme={founder.theme}
+                />
+              </div>
             </motion.div>
           ))}
         </div>
-        <div className="max-w-6xl mx-auto">
-        <FadeInSection>
-          <motion.div className="pt-12 text-center">
-            <p className="text-2xl md:text-3xl text-slate-700 leading-relaxed italic">
-              JAC Magnus isn't powered by luck or noise - it's built on
-              instinct, discipline, and the belief that impossible isn't made
-              for us.
-            </p>
-          </motion.div>
-        </FadeInSection>
+
+        {/* Bottom text */}
+        <div className="max-w-6xl mx-auto px-2">
+          <FadeInSection>
+            <motion.div className="pt-8 sm:pt-10 md:pt-12 text-center">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-700 leading-relaxed italic">
+                JAC Magnus isn't powered by luck or noise - it's built on
+                instinct, discipline, and the belief that impossible isn't made
+                for us.
+              </p>
+            </motion.div>
+          </FadeInSection>
+        </div>
       </div>
-      </div>
-      {/* ... (Bottom gradient div remains the same) ... */}
-      {/* <div
-        className="absolute bottom-0 left-0 h-[10vh] w-full pointer-events-none"
-        style={{
-          background: "linear-gradient(to top, #F2E6CC 10%, transparent 100%)",
-        }}
-      ></div> */}
     </section>
   );
 };
