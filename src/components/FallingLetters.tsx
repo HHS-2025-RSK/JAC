@@ -37,7 +37,7 @@ export const FallingLetters = () => {
           variants={sideLetterVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          // viewport={{ once: true }}
         >
           J
         </motion.span>
@@ -48,7 +48,7 @@ export const FallingLetters = () => {
           variants={centerItemVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          // viewport={{ once: true }}
         >
           +
         </motion.span>
@@ -59,7 +59,7 @@ export const FallingLetters = () => {
           variants={centerItemVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          // viewport={{ once: true }}
         >
           A
         </motion.span>
@@ -70,7 +70,7 @@ export const FallingLetters = () => {
           variants={centerItemVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          // viewport={{ once: true }}
         >
           +
         </motion.span>
@@ -81,7 +81,7 @@ export const FallingLetters = () => {
           variants={sideLetterVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          // viewport={{ once: true }}
         >
           C
         </motion.span>

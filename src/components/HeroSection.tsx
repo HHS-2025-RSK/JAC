@@ -27,7 +27,7 @@ const HeroSection = () => {
         <div className="text-center">
           <motion.h1
             className="font-black drop-shadow-2xl
-             text-[length:clamp(3rem,15vw,14rem)]
+             text-[length:clamp(3rem,15vw,16rem)]
              leading-[1.12] md:leading-[1.06] pb-[0.25em] mb-2"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -38,6 +38,7 @@ const HeroSection = () => {
               speed={2}
               colorFrom="#c7900f" // Bright gold
               colorTo="#dcb24e" // Goldenrod
+              className="font-anton"
             >
               JAC{" "}
             </AnimatedGradientText>
@@ -46,6 +47,7 @@ const HeroSection = () => {
                 speed={2}
                 colorFrom="#c7900f" // Bright gold
                 colorTo="#dcb24e" // Goldenrod
+                className="font-anton"
               >
                 Magnus
               </AnimatedGradientText>
