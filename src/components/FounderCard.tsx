@@ -120,19 +120,19 @@ export const FounderCard = ({
         className={`p-8 bg-gradient-to-b ${theme.gradientClasses} flex-1 flex flex-col`}
       >
         <div className={`space-y-5 ${theme.textColor} text-lg flex-1`}>
-          <p className="min-h-[80px]">
+          <p className="min-h-[100px]">
             <span className={`font-semibold ${theme.highlightColor}`}>
               Quirk:
             </span>{" "}
             {quirk}
           </p>
-          <p className="min-h-[80px]">
+          <p className="min-h-[100px]">
             <span className={`font-semibold ${theme.highlightColor}`}>
               Perk:
             </span>{" "}
             {perk}
           </p>
-          <p className="min-h-[80px]">
+          <p className="min-h-[100px]">
             <span className={`font-semibold ${theme.highlightColor}`}>
               Power Move:
             </span>{" "}

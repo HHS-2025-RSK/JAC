@@ -112,7 +112,7 @@ export const DenSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12 sm:mb-16 md:mb-20"
         >
-          <CinematicText className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6 text-slate-900">
+          <CinematicText className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6 text-slate-900">
             The Den
           </CinematicText>
           <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-amber-800 font-bold px-2">

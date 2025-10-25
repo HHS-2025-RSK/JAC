@@ -27,8 +27,8 @@ const HeroSection = () => {
         <div className="text-center">
           <motion.h1
             className="font-black drop-shadow-2xl
-             text-[length:clamp(3rem,15vw,16rem)]
-             leading-[1.12] md:leading-[1.06] pb-[0.25em] mb-2"
+             text-[length:clamp(5rem,18vw,16rem)]
+             leading-[1.12] md:leading-[1.06] pb-[0.15em]"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -64,17 +64,23 @@ const HeroSection = () => {
               </span> */}
             </span>
           </motion.h1>
+          <CinematicText
+            className="mx-auto max-w-5xl text-center text-[#F2E6CC] text-xl sm:text-xl md:text-3xl lg:text-4xl font-bold drop-shadow-lg italic"
+            delay={0.5}
+          >
+            Built Different. Wired for Impact.
+          </CinematicText>
         </div>
 
         {/* Tagline anchored at the bottom */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-20 md:lg:bottom-25 lg:bottom-25 px-6">
+        {/* <div className="pointer-events-none absolute inset-x-0 bottom-20 md:lg:bottom-25 lg:bottom-25 px-6">
           <CinematicText
             className="mx-auto max-w-5xl text-center text-[#F2E6CC] text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold drop-shadow-lg"
             delay={0.5}
           >
             Built Different. Wired for Impact.
           </CinematicText>
-        </div>
+        </div> */}
       </motion.div>
     </section>
   );

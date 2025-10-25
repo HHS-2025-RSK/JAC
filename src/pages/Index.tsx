@@ -834,7 +834,6 @@
 // export default Index;
 
 // src/pages/Index.tsx
-// src/pages/Index.tsx
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import forestHero from "@/assets/forest-video.mp4";
@@ -848,6 +847,8 @@ import { FallingLetters } from "@/components/FallingLetters";
 import { FadeInSection } from "@/components/CinematicText";
 import GradientScrollText from "@/components/GradientScrollText";
 import { Menu, X } from "lucide-react";
+import { ScrollRevealCard } from "@/components/transitions/ScrollRevealCard";
+import { AnimatedTextLine } from "@/components/transitions/AnimatedTextLine";
 
 const Index = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -924,7 +925,7 @@ const Index = () => {
         >
           <div className="w-full mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center">
             <h1
-              className={`text-2xl sm:text-3xl md:text-4xl font-bold text-gradient-gold tracking-wider transition-opacity duration-300 select-none ${
+              className={`font-anton text-2xl sm:text-3xl md:text-4xl font-bold text-gradient-gold tracking-wider transition-opacity duration-300 select-none ${
                 brandVisible ? "opacity-100" : "opacity-0"
               }`}
             >
@@ -947,7 +948,7 @@ const Index = () => {
 
         {/* Full-screen menu overlay */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm">
+          <div className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-md">
             <button
               aria-label="Close menu"
               className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/90 hover:text-white transition"
@@ -956,20 +957,25 @@ const Index = () => {
               <X size={28} className="sm:w-8 sm:h-8" />
             </button>
 
-            <div className="absolute top-16 sm:top-20 left-4 right-4 sm:left-6 sm:right-6 rounded-2xl bg-white/10 border border-white/20 shadow-2xl">
-              <ul className="divide-y divide-white/10">
-                {navItems.map((item) => (
-                  <li key={item.name}>
-                    <a
-                      href={item.href}
-                      className="block px-4 sm:px-6 py-3 sm:py-4 text-xl sm:text-2xl text-white/90 hover:text-white tracking-wide transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            {/* Menu Content - Centered with max-w-5xl */}
+            <div className="flex items-center justify-center min-h-full px-4 sm:px-6">
+              <div className="w-full max-w-5xl">
+                <div className="rounded-2xl bg-white/10 border border-white/20 shadow-2xl backdrop-blur-md">
+                  <ul className="divide-y divide-white/10">
+                    {navItems.map((item) => (
+                      <li key={item.name}>
+                        <a
+                          href={item.href}
+                          className="block px-6 sm:px-8 py-4 sm:py-5 text-2xl sm:text-3xl md:text-4xl text-white/90 hover:text-white tracking-wide transition-colors font-medium text-center"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -979,60 +985,94 @@ const Index = () => {
 
         {/* Introduction */}
         <section id="intro" className="relative z-10">
-          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-[5vh]">
-            <FadeInSection>
-              <div className="rounded-2xl sm:rounded-3xl px-4 sm:px-6 md:px-10 py-6 md:py-8 bg-transparent">
+          <div className="relative px-4 sm:px-6 pt-[2vh] pb-10">
+            <ScrollRevealCard>
+              <div className="rounded-2xl mx-auto max-w-7xl sm:rounded-3xl px-6 sm:px-8 md:px-12 py-6 sm:py-7 md:py-8 bg-[#FDFBF3]/95 shadow-xl border border-amber-100">
                 <GradientScrollText>
-                  <div className="rounded-2xl sm:rounded-3xl px-6 sm:px-8 md:px-12 py-6 sm:py-7 md:py-8 bg-white/85 shadow-xl border border-amber-100">
-                    <p className="text-slate-900 leading-tight">
-                      {/* Line 1 - Regular text */}
-                      <span className="block text-base sm:text-xl md:text-2xl text-center">
+                  <div className="px-6 sm:px-8 md:px-12 py-6 sm:py-7 md:py-8">
+                    <p className="text-slate-900 leading-tight space-y-6 sm:space-y-8 md:space-y-10">
+                      {/* Line 1 */}
+                      <AnimatedTextLine
+                        className="block text-base sm:text-xl md:text-2xl text-center"
+                        delay={0.1}
+                      >
                         We live in a world where everyone's building something,
                         yet few know why.
-                      </span>
+                      </AnimatedTextLine>
 
-                      {/* Line 2 - JAC Magnus bigger */}
-                      <span className="block mt-6 sm:mt-8 md:mt-10 text-2xl sm:text-3xl md:text-4xl font-black text-center">
+                      {/* Line 2 - JAC Magnus with shimmer */}
+                      <AnimatedTextLine
+                        className="block mt-6 sm:mt-8 md:mt-10 text-2xl sm:text-3xl md:text-4xl font-black text-center"
+                        delay={0.3}
+                        variant="fadeUp"
+                      >
                         At{" "}
-                        <span className="text-3xl sm:text-4xl md:text-5xl font-black text-gradient-gold">
+                        <motion.span
+                          className="text-3xl sm:text-4xl md:text-5xl font-black text-gradient-gold"
+                          initial={{ backgroundPosition: "0% 50%" }}
+                          whileInView={{ backgroundPosition: "100% 50%" }}
+                          viewport={{ once: false }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatDelay: 3,
+                          }}
+                          style={{
+                            background:
+                              "linear-gradient(90deg, #c7900f 0%, #f4d03f 50%, #c7900f 100%)",
+                            backgroundSize: "200% 100%",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            lineHeight: "inherit",
+                          }}
+                        >
                           JAC Magnus
-                        </span>
+                        </motion.span>
                         , we build with purpose.
-                      </span>
+                      </AnimatedTextLine>
 
-                      {/* Line 3 - Biggest emphasis */}
-                      <span className="block mt-6 sm:mt-8 md:mt-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-center">
+                      {/* Line 3 */}
+                      <AnimatedTextLine
+                        className="block mt-6 sm:mt-8 md:mt-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-center"
+                        delay={0.5}
+                        variant="fadeUp"
+                      >
                         Every idea we create, every product we design, and every
                         solution we deliver has meaning behind it.
-                      </span>
+                      </AnimatedTextLine>
 
-                      {/* Line 4 - Regular */}
-                      <span className="block mt-6 sm:mt-8 md:mt-10 text-2xl sm:text-3xl md:text-4xl text-center">
-                        We don't chase trends or noise.
-                      </span>
-
-                      {/* Line 5 - Bold emphasis */}
-                      <span className="block mt-6 sm:mt-8 md:mt-10 text-2xl sm:text-3xl md:text-4xl text-center">
+                      {/* Line 5 - Bold pulse */}
+                      {/* <AnimatedTextLine
+                        className="text-2xl sm:text-3xl md:text-4xl text-center"
+                        delay={0.6}
+                        variant="pulse"
+                      >
                         <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">
                           Refining, Rethinking, and Rebuilding
                         </span>
-                      </span>
+                      </AnimatedTextLine>
 
-                      {/* Line 6 - Continuation */}
-                      <span className="block mt-2 text-2xl sm:text-3xl md:text-4xl text-center">
+                      <AnimatedTextLine
+                        className="text-2xl sm:text-3xl md:text-4xl text-center"
+                        delay={0.7}
+                        variant="typewriter"
+                      >
                         until it feels right.
-                      </span>
+                      </AnimatedTextLine>
 
-                      {/* Line 7 - Closing statement */}
-                      <span className="block mt-6 sm:mt-8 md:mt-10 text-2xl sm:text-3xl md:text-4xl text-center">
+                      <AnimatedTextLine
+                        className="text-2xl sm:text-3xl md:text-4xl text-center"
+                        delay={0.7}
+                        variant="fadeUp"
+                      >
                         And at the heart of it all is one unwavering belief: if
                         it's not different, it's not Magnus.
-                      </span>
+                      </AnimatedTextLine> */}
                     </p>
                   </div>
                 </GradientScrollText>
               </div>
-            </FadeInSection>
+            </ScrollRevealCard>
           </div>
         </section>
 
@@ -1062,8 +1102,8 @@ const Index = () => {
                     </span>
                   </p>
                 </div>
-                <div className="bg-[#022B16]/95 p-5 sm:p-6">
-                  <p className="text-xl sm:text-2xl md:text-3xl text-[#F3EAD3]/90 leading-relaxed font-semibold text-center">
+                <div className="bg-[#c4eac1]/80 p-5 sm:p-6">
+                  <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed font-semibold text-center">
                     Our name is our origin, our purpose, and our promise to
                     build with heart, lead with integrity, and create with
                     meaning. Because strength isn't loud. It's lasting!

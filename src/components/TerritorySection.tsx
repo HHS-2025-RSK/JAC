@@ -88,7 +88,7 @@ export const TerritorySection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12 sm:mb-16 md:mb-20"
         >
-          <CinematicText className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6 text-slate-900">
+          <CinematicText className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6 text-slate-900">
             Our Territory
           </CinematicText>
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-amber-800 font-bold mb-8 sm:mb-10 md:mb-12 px-2">

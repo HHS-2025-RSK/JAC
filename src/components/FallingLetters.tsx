@@ -32,7 +32,7 @@ export const FallingLetters = () => {
     <div className="w-full mb-16">
       <div className="flex justify-center items-center max-w-6xl mx-auto px-6 gap-x-8 md:gap-x-16">
         <motion.span
-          className="text-6xl md:text-9xl font-black text-gradient-gold"
+          className="text-6xl md:text-9xl font-black text-gradient-gold font-anton"
           custom={{ delay: 0, startX: "12rem" }} // Changed from 0.2
           variants={sideLetterVariants}
           initial="hidden"
@@ -43,7 +43,7 @@ export const FallingLetters = () => {
         </motion.span>
 
         <motion.span
-          className="text-4xl md:text-7xl font-bold text-gradient-gold"
+          className="text-4xl md:text-7xl font-bold text-gradient-gold font-anton"
           custom={{ delay: 0.15 }} // Changed from 0.5
           variants={centerItemVariants}
           initial="hidden"
@@ -54,7 +54,7 @@ export const FallingLetters = () => {
         </motion.span>
 
         <motion.span
-          className="text-6xl md:text-9xl font-black text-gradient-gold"
+          className="text-6xl md:text-9xl font-black text-gradient-gold font-anton"
           custom={{ delay: 0.3 }} // Changed from 0.8
           variants={centerItemVariants}
           initial="hidden"
@@ -65,7 +65,7 @@ export const FallingLetters = () => {
         </motion.span>
 
         <motion.span
-          className="text-4xl md:text-7xl font-bold text-gradient-gold"
+          className="text-4xl md:text-7xl font-bold text-gradient-gold font-anton"
           custom={{ delay: 0.45 }} // Changed from 1.1
           variants={centerItemVariants}
           initial="hidden"
@@ -76,7 +76,7 @@ export const FallingLetters = () => {
         </motion.span>
 
         <motion.span
-          className="text-6xl md:text-9xl font-black text-gradient-gold"
+          className="text-6xl md:text-9xl font-black text-gradient-gold font-anton"
           custom={{ delay: 0.6, startX: "-12rem" }} // Changed from 1.4
           variants={sideLetterVariants}
           initial="hidden"

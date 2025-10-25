@@ -11,7 +11,7 @@ export const HuntSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <CinematicText className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6 text-slate-900">
+            <CinematicText className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6 text-slate-900">
               The Hunt
             </CinematicText>
           </motion.div>
@@ -41,8 +41,8 @@ export const HuntSection = () => {
                        transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
           >
             {/* Top section: Keywords in one line (except mobile) */}
-            <div className="bg-emerald-100 p-6 sm:p-8 md:p-10">
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-emerald-900 text-center font-bold sm:whitespace-nowrap overflow-x-auto">
+            <div className="bg-emerald-100 p-3 sm:p-4 md:p-5 py-6 sm:py-8 md:py-10">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-emerald-900 text-center font-bold">
                 Strategy | Consulting | Product Management | Hotel Management |
                 Marketing
               </p>
